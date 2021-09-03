@@ -52,7 +52,7 @@ function App() {
   const [postsState, setPostsState] = useState(null);
   
     function getPosts() {
-        axios.get('http://localhost:3000/posts')
+        axios.get('http://localhost:4000/posts')
             .then(res => {
                 setPostsState(res.data);
             })

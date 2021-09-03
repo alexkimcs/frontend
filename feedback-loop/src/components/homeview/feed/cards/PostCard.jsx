@@ -8,10 +8,10 @@ function PostCard({ post }) {
     console.log(post)
     return (
         <div className='PostCard'>
-            <PostHeader author={post.user} title={post.title}/>
+            <PostHeader author={post.username} title={post.title}/>
             <PostBody body={post.body}/>
             <hr />
-            <PostInteractions likes={post.likes} comments={post.comments}/>
+            <PostInteractions id={post._id} likes={post.likes} comments={post.comments}/>
         </div>
     );
 }
