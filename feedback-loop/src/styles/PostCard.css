@@ -1,0 +1,109 @@
+.PostCard{
+    border: 2px solid rgb(62, 62, 62);
+    margin: 1rem;
+    padding: 0.25rem;
+
+    border-radius: 0.5rem;
+}
+
+/*---------PostHeader---------*/
+
+.PostHeader {
+    background-color: rgb(62, 62, 62);
+    padding: 0.5rem 1rem;
+
+    border-radius: 0.25rem;
+
+}
+
+.post-title {
+    color: whitesmoke;
+    margin: 0rem;
+}
+
+.post-author {
+    color: whitesmoke;
+    margin: 0.25rem 1rem;
+
+}
+
+/*---------PostBody---------*/
+
+.PostBody {
+    margin: 0rem 2rem;
+}
+
+.body-text {
+    padding: 1rem;
+}
+
+/*---------PostInteractions---------*/
+
+.PostInteractions {
+    margin: 0rem 1rem;
+}
+
+.interactions-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.likes-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+
+}
+
+.like-icon {
+    font-size: x-large;
+    color: rgb(254, 213, 77);
+}
+
+.like-button {
+    border: none;
+    padding: 0.25rem;
+    background-color: rgb(62, 62, 62);
+    border-radius: 0.25rem;
+
+    
+}
+
+.likes-num {
+    background-color: rgb(254, 213, 77);
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.25rem;
+    margin: 0.5rem;
+    font-size: x-large;
+}
+
+.comment-button {
+    border-radius: 0.25rem;
+    background-color:  rgb(62, 62, 62);
+    color: whitesmoke;
+    height: 2rem;
+}
+
+.comment-button:hover {
+    color:rgb(254, 213, 77);
+}
+
+.comments-div {
+    
+}
+
+.comment-item {
+    background-color: rgb(62, 62, 62);
+    
+    padding: 0.25rem 1rem;
+    margin: 0.25rem;
+
+    border-radius: 0.25rem;
+}
+
+.comment-text {
+    color: whitesmoke;
+}
