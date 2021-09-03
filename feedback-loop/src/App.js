@@ -1,7 +1,8 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { DataContext } from './components/hidden/DataContext';
 import Main from './components/Main';
+import axios from 'axios';
 
 function App() {
   const initialInteractionState = {
@@ -41,14 +42,26 @@ function App() {
     }
 ];
 
-  const initialPostsState = {
-    posts: [...dummyPosts],
-    postsTotal: 0,
-    trendingTopics: [],
-  }
+  // const initialPostsState = {
+  //   posts: [],
+  //   postsTotal: 0,
+  //   trendingTopics: [],
+  // }
   
   const [interactionState, setInteractionState] = useState(initialInteractionState);
-  const [postsState, setPostsState] = useState(initialPostsState);
+  const [postsState, setPostsState] = useState(null);
+  
+    function getPosts() {
+        axios.get('http://localhost:3000/posts')
+            .then(res => {
+                setPostsState(res.data);
+            })
+            .catch(console.error);
+    }
+
+    useEffect(() => {
+        getPosts();
+    }, []);
 
   return (
     <div className="App">

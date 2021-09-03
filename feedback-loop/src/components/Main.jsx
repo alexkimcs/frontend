@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { DataContext } from './hidden/DataContext';
 import Feed from './homeview/feed/Feed';
 import Header from './homeview/header/Header';
