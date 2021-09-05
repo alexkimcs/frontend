@@ -11,37 +11,6 @@ function App() {
     searchValue: '',
   }
 
-  const dummyPosts = [
-    {
-        "user":"Cole",
-        "title": "React",
-        "body": "Thinking about the advantage of use context over params.  What do you prefer?",
-        "likes": 2,
-        "comments": ["great post"]
-    },
-    {
-        "user":"Michael",
-        "title": "React",
-        "body": "Thinking about the advantage of use context over params.  What do you prefer?",
-        "likes": 2,
-        "comments": ["not sure"]
-    },
-    {
-        "user":"Menty",
-        "title": "React",
-        "body": "Thinking about the advantage of use context over params.  What do you prefer?",
-        "likes": 3,
-        "comments": []
-    },
-    {
-        "user":"Nita",
-        "title": "React",
-        "body": "Thinking about the advantage of use context over params.  What do you prefer?",
-        "likes": 4,
-        "comments": ["yes","no"]
-    }
-];
-
   // const initialPostsState = {
   //   posts: [],
   //   postsTotal: 0,
