@@ -49,9 +49,17 @@ function App() {
         .catch(console.error);
     }
 
+    function checkSessionUser() {
+      const sessionUser = localStorage.getItem("user");
+      if (sessionUser) {
+        setThisUser({...thisUser, username: sessionUser});
+      }
+    }
+
     useEffect(() => {
-        getPosts();
-        getUsers();
+      getPosts();
+      getUsers();
+      checkSessionUser();
     }, []);
 
   return (
