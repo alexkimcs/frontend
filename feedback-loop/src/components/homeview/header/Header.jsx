@@ -16,6 +16,8 @@ function Header(props) {
                 <div className='title'>
                     <h1 className='header-title'>Feedback Loop</h1>
                 </div>
+
+
             </div>
             
             <Searchbar />
