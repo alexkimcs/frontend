@@ -7,29 +7,33 @@ function NewPostModal(props) {
 
     const { setAddPost, thisUser, getPosts } = useContext(DataContext);
 
-    const [titleValue, setTitleValue] = useState('');
-    const [bodyValue, setBodyValue] = useState('');
-
-    const handleTitleChange = (e) => {
-        setTitleValue(e.target.value);
+    const initialNewPostState = {
+        title: '',
+        body: '',
+        tags: ''
     }
 
-    const handleBodyChange = (e) => {
-        setBodyValue(e.target.value);
+    const [newPost, setNewPost] = useState(initialNewPostState);
+
+    const languageTags = ['HTML', 'CSS', 'JavaScript', 'Python', 'C#', 'C++', 'Git', 'CLI'];
+
+    const handleChange = (e) => {
+        setNewPost({...newPost, [e.target.id]: e.target.value})
+        console.log(newPost);
     }
 
     const handleSubmit = () => {
-        let newPost = {
+        let newPostObj = {
             username: thisUser.username,
-            title: titleValue,
-            body: bodyValue
+            title: newPost.title,
+            body: newPost.body,
+            tags: newPost.tags.split(', ')
         }
 
-        axios.post('http://localhost:4000/posts', newPost)
+        axios.post('http://localhost:4000/posts', newPostObj)
             .then(getPosts());
 
-        setTitleValue('');
-        setBodyValue('');
+        setNewPost(initialNewPostState);
         setAddPost(false);
 
     }
@@ -40,8 +44,18 @@ function NewPostModal(props) {
                 <div className='modal-textbox'>
                     
                     <div className='form'>
-                        <input className='title-input' type='text' placeholder='title' value={titleValue} onChange={handleTitleChange}/>
-                        <textarea className='body-input' rows='10' cols='30' placeholder='say what you need to say' value={bodyValue} onChange={handleBodyChange}/>
+                        <input className='title-input' id='title' type='text' placeholder='title' value={newPost.title} onChange={handleChange}/>
+                        <textarea className='body-input' id='body' rows='10' cols='30' placeholder='say what you need to say' value={newPost.body} onChange={handleChange}/>
+                        <div className='tags'>
+                            <div>
+                                <label for='tag-input'>
+                                    enter tags separated by commas
+                                    <input className='tag-input' id='tags' name='tag-input' type='text' placeHolder='e.g. javscript, react, components' value={newPost.tags} onChange={handleChange} />
+                                </label>
+                                
+                            </div>
+                            
+                        </div>
                         <div className='form-buttons'>
                             <button className='new-post-submit-button' type='button' onClick={handleSubmit}>submit</button>
                             <button className='cancel-button' type='button' onClick={() => setAddPost(false)} >cancel</button>

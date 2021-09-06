@@ -6,7 +6,6 @@ function Main(props) {
     return (
         <div>
             <Header />
-            <h1>main component</h1>
             <Feed />
         </div>
     );
