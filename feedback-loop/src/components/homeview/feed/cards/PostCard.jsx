@@ -9,7 +9,7 @@ function PostCard({ post }) {
     console.log(post)
     return (
         <div className='PostCard'>
-            <PostHeader author={post.username} title={post.title}/>
+            <PostHeader author={post.username} title={post.title} time={post.createdAt} />
             <PostBody body={post.body}/>
             <hr />
             <PostInteractions id={post._id} likes={post.likes} comments={post.comments}/>

@@ -49,10 +49,67 @@ function App() {
         .catch(console.error);
     }
 
+    const displayTime = (time) => {
+      
+      let postTime = {
+        year: new Date(time).getFullYear(),
+        month: new Date(time).getMonth(),
+        day: new Date(time).getDate(),
+        hour: new Date(time).getHours(),
+        minute: new Date(time).getMinutes(),
+        second: new Date(time).getSeconds()
+      }
+
+      let viewTime = {
+        year: new Date().getFullYear(),
+        month: new Date().getMonth(),
+        day: new Date().getDate(),
+        hour: new Date().getHours(),
+        minute: new Date().getMinutes(),
+        second: new Date().getSeconds()
+      }
+
+      
+      if (viewTime.year === postTime.year) {
+        if (viewTime.month === postTime.month) {
+          if (viewTime.day === postTime.day) {
+            if (viewTime.hour === postTime.hour) {
+              if (viewTime.minute === postTime.minute) {
+                if ((viewTime.second - postTime.second) < 30 ) {
+                  return 'just now'
+                } else {
+                  let diff = viewTime.second - postTime.second;
+                  return `${diff} s`;
+                }
+              } else {
+                let diff = viewTime.minute - postTime.minute;
+                return `${diff} m`;
+              }
+            } else {
+              let diff = viewTime.hour - postTime.hour;
+              return `${diff} h`;
+            }
+          } else {
+            let diff = viewTime.day - postTime.day;
+            return `${diff} d`;
+          }
+        } else {
+          let diff = viewTime.month - postTime.month;
+          return `${diff} m`;
+        }
+      } else {
+        let diff = viewTime.year - postTime.year;
+        return `${diff} y`;
+      }
+
+    }
+
     useEffect(() => {
         getPosts();
         getUsers();
     }, []);
+
+    displayTime("2021-09-06T19:40:40.481Z");
 
   return (
     <div className="App">
@@ -72,7 +129,8 @@ function App() {
         initialUserState,
         isLoggedIn, 
         setIsLoggedIn,
-        getPosts
+        getPosts, 
+        displayTime
       }}>
         {addPost &&
           <NewPostModal />
