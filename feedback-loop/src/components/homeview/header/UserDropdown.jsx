@@ -6,7 +6,10 @@ function UserDropdown(props) {
     const { thisUser, setLogIn } = useContext(DataContext);
     return (
         <div className='UserDropdown'>
+
+
             <button className='user-login-button' type='button' onClick={() => setLogIn(true)}>hello, {thisUser.username}</button>
+
         </div>
     );
 }
