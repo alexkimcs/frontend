@@ -2,6 +2,7 @@ import React from 'react';
 import Searchbar from './Searchbar';
 import '../../../styles/Header.css';
 import UserDropdown from './UserDropdown';
+import AddPost from './AddPost';
 import logo from '../../../logo-5.png';
 
 
@@ -21,8 +22,11 @@ function Header(props) {
             </div>
             
             <Searchbar />
-
-            <UserDropdown />
+            <div className='user-header'>
+                <AddPost />
+                <UserDropdown />
+            </div>
+            
         </div>
     );
 }

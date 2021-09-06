@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import Comment from './Comment';
+import { DataContext } from '../../../hidden/DataContext';
 
 function PostInteractions({ id, likes, comments }) {
+
+    const { thisUser } = useContext(DataContext);
 
     const [postLikes, setPostLikes] = useState(likes);
     const [isLiked, setIsLiked] = useState(false);
     const [addNew, setAddNew] =useState(false);
     const [commentText, setCommentText] = useState('');
-    console.log('rendered', postLikes)
     
 
     const handleClickLike = (e) => {
@@ -31,8 +34,13 @@ function PostInteractions({ id, likes, comments }) {
     }
 
     const createComment = () => {
+        let newComment = {
+            username: thisUser.username,
+            body: commentText
+        }
+
         let newComments = comments;
-        newComments.push(commentText);
+        newComments.push(newComment);
 
         axios.put(`http://localhost:4000/posts/${id}`, {comments: newComments});
 
@@ -58,16 +66,12 @@ function PostInteractions({ id, likes, comments }) {
             <hr />
             <div className='comments-div'>
                 {comments.map((comment)=> {
-                    return (
-                        <div className='comment-item'>
-                            <p className='comment-text'>{comment}</p>
-                        </div>
-                    )
+                    return <Comment key={id + '-comment-' + (comments.indexOf(comment) + 1)} comment={comment} />
                 })}
                 {addNew &&
                     <div className='comment-item'>
-                        <input type='text' placeholder='add comment here' value={commentText} onChange={handleCommentChange} />
-                        <button type='button' onClick={createComment}>post</button>
+                        <input className='new-comment-input' type='text' placeholder='add comment here' value={commentText} onChange={handleCommentChange} />
+                        <button className='new-comment-button' type='button' onClick={createComment}>post</button>
                     </div>
                 }
             </div>
