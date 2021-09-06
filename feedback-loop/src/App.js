@@ -49,6 +49,13 @@ function App() {
         .catch(console.error);
     }
 
+
+    function checkSessionUser() {
+      const sessionUser = localStorage.getItem("user");
+      if (sessionUser) {
+        setThisUser({...thisUser, username: sessionUser});
+      }
+
     const displayTime = (time) => {
       
       let postTime = {
@@ -102,11 +109,13 @@ function App() {
         return `${diff} y`;
       }
 
+
     }
 
     useEffect(() => {
-        getPosts();
-        getUsers();
+      getPosts();
+      getUsers();
+      checkSessionUser();
     }, []);
 
     displayTime("2021-09-06T19:40:40.481Z");
