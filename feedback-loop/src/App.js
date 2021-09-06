@@ -2,7 +2,9 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import { DataContext } from './components/hidden/DataContext';
 import Main from './components/Main';
+import NewPostModal from './components/homeview/modals/NewPostModal';
 import axios from 'axios';
+import LogInModal from './components/homeview/modals/LogInModal';
 
 function App() {
   const initialInteractionState = {
@@ -11,36 +13,11 @@ function App() {
     searchValue: '',
   }
 
-  const dummyPosts = [
-    {
-        "user":"Cole",
-        "title": "React",
-        "body": "Thinking about the advantage of use context over params.  What do you prefer?",
-        "likes": 2,
-        "comments": ["great post"]
-    },
-    {
-        "user":"Michael",
-        "title": "React",
-        "body": "Thinking about the advantage of use context over params.  What do you prefer?",
-        "likes": 2,
-        "comments": ["not sure"]
-    },
-    {
-        "user":"Menty",
-        "title": "React",
-        "body": "Thinking about the advantage of use context over params.  What do you prefer?",
-        "likes": 3,
-        "comments": []
-    },
-    {
-        "user":"Nita",
-        "title": "React",
-        "body": "Thinking about the advantage of use context over params.  What do you prefer?",
-        "likes": 4,
-        "comments": ["yes","no"]
-    }
-];
+  const initialUserState = {
+    username: 'guest',
+    email: ''
+  }
+
 
   // const initialPostsState = {
   //   posts: [],
@@ -50,6 +27,11 @@ function App() {
   
   const [interactionState, setInteractionState] = useState(initialInteractionState);
   const [postsState, setPostsState] = useState(null);
+  const [users, setUsers] = useState(null);
+  const [thisUser, setThisUser] = useState(initialUserState);
+  const [addPost, setAddPost] = useState(false);
+  const [logIn, setLogIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   
     function getPosts() {
         axios.get('http://localhost:4000/posts')
@@ -59,8 +41,17 @@ function App() {
             .catch(console.error);
     }
 
+    function getUsers() {
+      axios.get('http://localhost:4000/users')
+        .then(res => {
+          setUsers(res.data);
+        })
+        .catch(console.error);
+    }
+
     useEffect(() => {
         getPosts();
+        getUsers();
     }, []);
 
   return (
@@ -69,8 +60,25 @@ function App() {
         interactionState,
         setInteractionState,
         postsState,
-        setPostsState
+        setPostsState,
+        addPost,
+        setAddPost,
+        users,
+        setUsers,
+        thisUser, 
+        setThisUser,
+        logIn, 
+        setLogIn, 
+        initialUserState,
+        isLoggedIn, 
+        setIsLoggedIn
       }}>
+        {addPost &&
+          <NewPostModal />
+        }
+        {logIn &&
+          <LogInModal />
+        }
         <Main />
       </DataContext.Provider>
     </div>

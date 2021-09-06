@@ -1,0 +1,79 @@
+.modal {
+    background-color: rgba(62, 62, 62, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 1;
+    overflow: auto;
+
+    text-align: center;
+    
+}
+
+.modal-textbox {
+    background-color: rgb(62, 62, 62);
+    border: 2px solid whitesmoke;
+    box-shadow: 0rem 0rem 2rem rgb(0, 0, 0);
+    width: 20rem;
+    height: auto;
+    border-radius: 2rem;
+
+    margin: 10rem auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.logged-in-as {
+    color:whitesmoke;
+}
+
+.log-in-header {
+    margin: 0.25rem auto;
+    margin-top: 1rem;
+}
+
+.logged-in-username {
+    margin: 0.25rem auto;
+}
+
+.tabs {
+    margin: 0.5rem auto;
+    padding: 0rem 1rem;
+}
+
+.tab-button {
+    width: 50%;
+    color: whitesmoke;
+    background-color: rgb(62, 62, 62);
+    border: none;
+    border-top: 1px solid whitesmoke;
+    border-left: 1px solid whitesmoke;
+    border-right: 1px solid whitesmoke;
+    border-radius: 0.5rem 0.5rem 0rem 0rem 
+}
+
+
+.tab-button:focus {
+    background-color: whitesmoke;
+    color: rgb(62, 62, 62);
+
+}
+
+.cancel-button {
+    margin: 1rem;
+    border: 2px solid whitesmoke;
+    padding: 0.25rem 1rem;
+    border-radius: 0.5rem;
+    font-size: medium;
+
+    color: rgb(62, 62, 62);
+    background-color: whitesmoke;
+}
+
+.cancel-button:hover {
+    background-color: rgb(62, 62, 62);
+    color: whitesmoke;
+}
