@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Comment from './Comment';
 
 function PostInteractions({ id, likes, comments }) {
 
@@ -7,7 +8,6 @@ function PostInteractions({ id, likes, comments }) {
     const [isLiked, setIsLiked] = useState(false);
     const [addNew, setAddNew] =useState(false);
     const [commentText, setCommentText] = useState('');
-    console.log('rendered', postLikes)
     
 
     const handleClickLike = (e) => {
@@ -58,11 +58,7 @@ function PostInteractions({ id, likes, comments }) {
             <hr />
             <div className='comments-div'>
                 {comments.map((comment)=> {
-                    return (
-                        <div className='comment-item'>
-                            <p className='comment-text'>{comment}</p>
-                        </div>
-                    )
+                    return <Comment key={id + '-comment-' + (comments.indexOf(comment) + 1)}comment={comment} />
                 })}
                 {addNew &&
                     <div className='comment-item'>

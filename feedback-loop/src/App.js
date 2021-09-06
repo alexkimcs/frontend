@@ -71,7 +71,8 @@ function App() {
         setLogIn, 
         initialUserState,
         isLoggedIn, 
-        setIsLoggedIn
+        setIsLoggedIn,
+        getPosts
       }}>
         {addPost &&
           <NewPostModal />
