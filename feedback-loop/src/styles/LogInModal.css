@@ -41,6 +41,7 @@
 
 .tabs {
     margin: 0.5rem auto;
+    margin-bottom: 0rem;
     padding: 0rem 1rem;
 }
 
@@ -49,17 +50,38 @@
     color: whitesmoke;
     background-color: rgb(62, 62, 62);
     border: none;
-    border-top: 1px solid whitesmoke;
-    border-left: 1px solid whitesmoke;
-    border-right: 1px solid whitesmoke;
-    border-radius: 0.5rem 0.5rem 0rem 0rem 
+    border: 1px solid whitesmoke;
+    border-radius: 0.5rem 0.5rem 0rem 0rem;
+
+    margin-bottom: 0rem;
 }
 
 
-.tab-button:focus {
+.selected {
     background-color: whitesmoke;
     color: rgb(62, 62, 62);
 
+}
+
+.input-div {
+    margin: 0rem 1rem;
+    padding: 1rem;
+
+    background-color: whitesmoke;
+    color: rgb(62, 62, 62);
+
+    border-top: 1px solid whitesmoke;
+}
+
+.existing-user-input {
+    background-color: whitesmoke;
+    color: rgb(62, 62, 62);
+
+    border: 2px solid rgb(62, 62, 62);
+
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    margin: 0.25rem auto;
 }
 
 .cancel-button {

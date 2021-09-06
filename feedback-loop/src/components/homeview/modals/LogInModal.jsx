@@ -60,7 +60,7 @@ function LogInModal(props) {
                 setUsers([...users, newUser])
             })
             .then(() => {
-                
+
             })
             .catch(console.error)
 
@@ -82,11 +82,11 @@ function LogInModal(props) {
                     {!isLoggedIn && 
                         <div>
                             <div className='tabs'>
-                                <button className='existing-user-button tab-button' type='button' onClick={() => setExistingUser(true)} >existing user</button>
-                                <button className='new-user-button tab-button' type='button' onClick={() => setExistingUser(false)} >new user</button>
+                                <button className={`existing-user-button tab-button ${(existingUser) ? 'selected' : null}`} type='button' onClick={() => setExistingUser(true)} >existing user</button>
+                                <button className={`new-user-button tab-button ${(existingUser) ? null : 'selected'}`} type='button' onClick={() => setExistingUser(false)} >new user</button>
                             </div>
                             {existingUser && 
-                                <div>
+                                <div className='input-div'>
                                     <input className='existing-user-input' type='text' placeholder='username' value={usernameLogIn} onChange={handleChange} />
                                     {(noUser) ? 
                                         <p className='no-user-found'>user doesn't exist</p> :
@@ -95,7 +95,7 @@ function LogInModal(props) {
                                 </div>
                             }
                             {!existingUser && 
-                                <div>
+                                <div className='input-div'>
                                     <input className='existing-user-input' type='text' placeholder='username' value={newUsername} onChange={handleNewUsername} />
                                     <input className='existing-user-input' type='text' placeholder='email' value={newEmail} onChange={handleNewEmail} />
                                 </div>
