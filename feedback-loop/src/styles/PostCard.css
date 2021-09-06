@@ -24,7 +24,18 @@
 .post-author {
     color: whitesmoke;
     margin: 0.25rem 1rem;
+    margin-right: 0.75rem;
 
+}
+
+.post-header-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.post-time {
+    color: rgb(254, 213, 77);
 }
 
 /*---------PostBody---------*/
