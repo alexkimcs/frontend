@@ -4,7 +4,8 @@ function Comment({comment}) {
 
     return (
         <div className='comment-item'>
-            <p className='comment-text'>{comment.username} <span style={{fontStyle: 'italic', fontSize: 'xx-small'}}>said</span> {comment.body}</p>
+            <h4 className='comment-text'>{comment.username} <span style={{fontStyle: 'italic', fontSize: 'small'}}>said</span> : </h4>
+            <p className='comment-body'>{comment.body}</p>
             <p classnmae='comment-timestamp'></p>
         </div>
     );

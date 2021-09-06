@@ -10,8 +10,8 @@ function PostHeader({title, author, time}) {
         <div className='PostHeader'>
             <h2 className='post-title'>{title}</h2>
             <div className='post-header-info'>
-               <h5 className='post-author'><span style={{fontStyle: 'italic', fontSize: 'xx-small'}}>authored by</span> {author}</h5>
-               <h5 className='post-time'>{displayTime(time)}</h5> 
+               <h3 className='post-author'><span style={{fontStyle: 'italic', fontSize: 'small'}}>posted by</span> {author}</h3>
+               <h3 className='post-time'>{displayTime(time)}</h3> 
             </div>
             
         </div>

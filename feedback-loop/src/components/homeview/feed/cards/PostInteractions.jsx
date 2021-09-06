@@ -70,8 +70,8 @@ function PostInteractions({ id, likes, comments }) {
                 })}
                 {addNew &&
                     <div className='comment-item'>
-                        <input type='text' placeholder='add comment here' value={commentText} onChange={handleCommentChange} />
-                        <button type='button' onClick={createComment}>post</button>
+                        <input className='new-comment-input' type='text' placeholder='add comment here' value={commentText} onChange={handleCommentChange} />
+                        <button className='new-comment-button' type='button' onClick={createComment}>post</button>
                     </div>
                 }
             </div>
