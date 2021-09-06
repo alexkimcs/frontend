@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { DataContext } from '../../hidden/DataContext';
 
 function UserDropdown(props) {
+
+    const { thisUser, setLogIn } = useContext(DataContext);
     return (
         <div className='UserDropdown'>
-            <p>user login here</p>
+            <button className='user-login-button' type='button' onClick={() => setLogIn(true)}>hello, {thisUser.username}</button>
         </div>
     );
 }
