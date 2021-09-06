@@ -5,6 +5,8 @@ import PostInteractions from './PostInteractions';
 import '../../../../styles/PostCard.css';
 
 function PostCard({ post }) {
+
+    console.log(post)
     return (
         <div className='PostCard'>
             <PostHeader author={post.username} title={post.title}/>
