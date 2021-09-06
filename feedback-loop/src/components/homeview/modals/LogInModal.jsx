@@ -11,7 +11,7 @@ function LogInModal(props) {
     const [newEmail, setNewEmail] = useState('');
     const [noUser, setNoUser] = useState(false);
 
-    const { thisUser, setThisUser, users, setUsers, logIn, setLogIn, initialUserState, isLoggedIn, setIsLoggedIn } = useContext(DataContext);
+    const { thisUser, setThisUser, users, setUsers, setLogIn, initialUserState, isLoggedIn, setIsLoggedIn } = useContext(DataContext);
 
     const handleChange = (e) => {
         setUsernameLogIn(e.target.value);

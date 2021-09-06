@@ -1,10 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { DataContext } from '../../hidden/DataContext';
 import '../../../styles/NewPostModal.css';
+import axios from 'axios';
 
 function NewPostModal(props) {
 
-    const { setAddPost } = useContext(DataContext);
+    const { setAddPost, thisUser, getPosts } = useContext(DataContext);
 
     const [titleValue, setTitleValue] = useState('');
     const [bodyValue, setBodyValue] = useState('');
@@ -19,11 +20,13 @@ function NewPostModal(props) {
 
     const handleSubmit = () => {
         let newPost = {
+            username: thisUser.username,
             title: titleValue,
             body: bodyValue
         }
 
-        console.log('newPost', newPost);
+        axios.post('http://localhost:4000/posts', newPost)
+            .then(getPosts());
 
         setTitleValue('');
         setBodyValue('');

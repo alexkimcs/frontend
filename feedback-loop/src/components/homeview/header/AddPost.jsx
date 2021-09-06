@@ -3,7 +3,7 @@ import { DataContext } from '../../hidden/DataContext';
 
 function AddPost(props) {
 
-    const { addPost, setAddPost } = useContext(DataContext);
+    const { setAddPost } = useContext(DataContext);
 
     return (
         <div className='AddPost'>

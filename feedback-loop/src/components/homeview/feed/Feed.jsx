@@ -1,13 +1,12 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { DataContext } from '../../hidden/DataContext';
 import PostCard from './cards/PostCard';
 
 
 function Feed(props) {
-    const { postsState, setPostsState } = useContext(DataContext);
+    const { postsState } = useContext(DataContext);
 
     useEffect(() => {
-        console.log(postsState);
     }, [postsState])
 
     if (postsState) {
