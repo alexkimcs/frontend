@@ -5,19 +5,19 @@ import { DataContext } from '../../hidden/DataContext';
 
 function LogInModal() {
 
-    const initialLoginState ={
-        loggedIn: false,
+    const initialLoginState = {
         username: '',
+        newUsername: '',
         email: '',
         password: '',
+        newPassword: '',
         verifyPassword: ''
-    }
-
+    };
     const [loginState, setLoginState] = useState(initialLoginState);
     const [existingUserLogin, setExistingUserLogin] = useState(true);
     const [userNotFound, setUserNotFound] = useState(false);
 
-    const { thisUser, setThisUser, users, setUsers, setLogIn, initialUserState, isLoggedIn, setIsLoggedIn } = useContext(DataContext);
+    const { thisUser, setThisUser, setLogIn, initialUserState, isLoggedIn, setIsLoggedIn } = useContext(DataContext);
 
     const handleChange = (event) => {
         setLoginState({ ...loginState, [event.target.id]: event.target.value });
@@ -27,42 +27,48 @@ function LogInModal() {
         setThisUser(initialUserState);
         setUserNotFound(false);
         setIsLoggedIn(false);
-    }
+        localStorage.clear();
+    };
 
     const handleExistingSubmit = async () => {
         console.log("logging in");
-    }
 
-    // const handleSubmit = () => {
-    //     let newPost = {
-    //         username: thisUser.username,
-    //         title: titleValue,
-    //         body: bodyValue
-    //     }
+        let loginData = {
+            username: loginState.username,
+            password: loginState.password
+        };
 
-    //     axios.post('http://localhost:4000/posts', newPost)
-    //         .then(getPosts());
+        console.log("login Data",loginData);
 
-    //     setTitleValue('');
-    //     setBodyValue('');
-    //     setAddPost(false);
+        axios.post('http://localhost:4000/users/login', loginData)
+        .then((res) => {
+            if (res.data){
+                console.log('login succeeded')
+                setThisUser(res.data);
+                localStorage.setItem('user', res.data.username)
+                console.log("username", res.data.username)
+            }
+            else{
+                console.log('login failed');
+            }
+        })
+    };
 
-    // }
-
-    const handleNewSubmit = async () => {
+    const handleNewSubmit = () => {
         console.log("creating account");
         
-        if (loginState.password !== loginState.verifyPassword){
+        if (loginState.newPassword !== loginState.verifyPassword){
             console.log("error");
         } else{
             
             const newUser = {
-                username : loginState.username,
+                username : loginState.newUsername,
                 email : loginState.email,
-                password : loginState.password
+                password : loginState.newPassword
             }
 
-            axios.post('http://localhost:4000/users', newUser).then((res) => {
+            axios.post('http://localhost:4000/users', newUser)
+            .then((res) => {
                 setThisUser(res.data);
                 localStorage.setItem('user', res.data.username)
                 console.log(res.data.username)
@@ -73,8 +79,8 @@ function LogInModal() {
     }
  
     useEffect(() => {
-        console.log(thisUser)
-    }, [existingUserLogin, thisUser, userNotFound, loginState.loggedIn])
+        console.log("thisUser", thisUser)
+    }, [existingUserLogin, thisUser, userNotFound, isLoggedIn])
 
     return (
         <div className='LogInModal'>
@@ -94,27 +100,27 @@ function LogInModal() {
                                 <div className='input-div'>
                                     <input className='existing-user-input' type='text' placeholder='username' id="username" value={loginState.username} onChange={handleChange} />
                                     <input className='existing-user-input' type='text' placeholder='password' id="password" value={loginState.password} onChange={handleChange} />
-                                    {(userNotFound) ? <p className='no-user-found'>user doesn't exist</p> : null }
+                                    {(userNotFound) ? <p className='no-user-found'>login failed</p> : null }
                                 </div>
                             }
                             {!existingUserLogin && 
                                 <div className='input-div'>
-                                    <input className='existing-user-input' type='text' placeholder='username' id="username" value={loginState.username} onChange={handleChange} />
+                                    <input className='existing-user-input' type='text' placeholder='username' id="newUsername" value={loginState.newUsername} onChange={handleChange} />
                                     <input className='existing-user-input' type='text' placeholder='email' id="email" value={loginState.email} onChange={handleChange} />
-                                    <input className='existing-user-input' type='text' placeholder='password' id="password" value={loginState.password} onChange={handleChange} />
+                                    <input className='existing-user-input' type='text' placeholder='password' id="newPassword" value={loginState.newPassword} onChange={handleChange} />
                                     <input className='existing-user-input' type='text' placeholder='verify password' id="verifyPassword" value={loginState.verifyPassword} onChange={handleChange} />
                                 </div>
                             }
                         </div>
                     }
                     <div>
-                        {loginState.loggedIn && 
+                        {isLoggedIn && 
                             <button className='login-form-button' type='button' onClick={logOut} >log out</button>
                         }
-                        {!loginState.loggedIn && existingUserLogin &&
+                        {!isLoggedIn && existingUserLogin &&
                             <button className='login-form-button' type='button' onClick={handleExistingSubmit} >log in</button>
                         }
-                        {!loginState.loggedIn && !existingUserLogin && 
+                        {!isLoggedIn && !existingUserLogin && 
                             <button className='login-form-button' type='button' onClick={handleNewSubmit} >create account</button>
                         }
                         <button className='login-form-button' type='button' onClick={() => setLogIn(false)} >close</button>
