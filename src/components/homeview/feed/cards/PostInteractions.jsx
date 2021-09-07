@@ -5,7 +5,7 @@ import { DataContext } from '../../../hidden/DataContext';
 
 function PostInteractions({ id, likes, comments }) {
 
-    const { thisUser } = useContext(DataContext);
+    const { thisUser, URL } = useContext(DataContext);
 
     const [postLikes, setPostLikes] = useState(likes);
     const [isLiked, setIsLiked] = useState(false);
@@ -25,7 +25,7 @@ function PostInteractions({ id, likes, comments }) {
         let newLikes = thisLike ? tmp - 1 : tmp + 1
         setPostLikes(newLikes)
         
-        axios.put(`http://localhost:4000/posts/${id}`, {likes: newLikes});
+        axios.put(`${URL}/posts/${id}`, {likes: newLikes});
         
     }
 
@@ -42,7 +42,7 @@ function PostInteractions({ id, likes, comments }) {
         let newComments = comments;
         newComments.push(newComment);
 
-        axios.put(`http://localhost:4000/posts/${id}`, {comments: newComments});
+        axios.put(`${URL}/posts/${id}`, {comments: newComments});
 
         setAddNew(false);
         setCommentText('');
