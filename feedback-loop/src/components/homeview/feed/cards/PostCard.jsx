@@ -10,7 +10,7 @@ function PostCard({ post }) {
         <div className='PostCard'>
             <PostHeader author={post.username} title={post.title} time={post.createdAt} />
             <PostBody body={post.body}/>
-            <p className='tags-list'>tags: {post.tags.map(tag => {return <Tag key={tag} tag={tag} /> })}</p>
+            <div className='tags-list'><p>tags:</p>{post.tags.map(tag => {return <Tag key={tag} tag={tag} /> })}</div>
             <hr />
             <PostInteractions id={post._id} likes={post.likes} comments={post.comments}/>
         </div>
