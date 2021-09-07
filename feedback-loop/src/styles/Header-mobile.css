@@ -1,5 +1,5 @@
 
-@media (max-width: 1245px) {
+/* @media (max-width: 1245px) {
     .Header {
         padding: 0px;
     }
@@ -8,7 +8,18 @@
         text-align: center;
 
     }
-}
+    
+    .logo{
+        width: 100px;
+    }
+    .add-post-button {
+        display: flex;
+    }
+
+    .user-login-button{
+        display: flex;
+    }
+} */
 
 /* --iphone X -- */
 @media only screen 
@@ -18,11 +29,13 @@
 
     .Header{
         flex-direction: column;
-        width: 100%;    
+        width: 100%; 
+        padding: 0px;   
     }
-    
+
     .header-title {
-        display: flex;
+        flex:2;
+        text-align: center;
             
     } 
 
@@ -32,10 +45,11 @@
     } 
 
     .logo {
-       width: 80px;
+       width: 1rem;
     }
 
     .UserDropdown {
         align-items: center;
     } 
+    
 }
