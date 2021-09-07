@@ -17,7 +17,7 @@ function App() {
     username: 'guest',
     email: ''
   }
-  
+  const URL = "https://feedbackloopbackend.herokuapp.com"
   const [interactionState, setInteractionState] = useState(initialInteractionState);
   const [postsState, setPostsState] = useState(null);
   const [users, setUsers] = useState(null);
@@ -27,7 +27,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   
     function getPosts() {
-        axios.get('http://localhost:4000/posts')
+        axios.get(`${URL}/posts`)
             .then(res => {
                 setPostsState(res.data);
             })
@@ -35,7 +35,7 @@ function App() {
     }
 
     function getUsers() {
-      axios.get('http://localhost:4000/users')
+      axios.get(`${URL}/users`)
         .then(res => {
           setUsers(res.data);
         })
@@ -134,7 +134,8 @@ function App() {
         isLoggedIn, 
         setIsLoggedIn,
         getPosts, 
-        displayTime
+        displayTime,
+        URL
       }}>
         {addPost &&
           <NewPostModal />

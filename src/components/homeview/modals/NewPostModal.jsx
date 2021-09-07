@@ -5,7 +5,7 @@ import axios from 'axios';
 
 function NewPostModal(props) {
 
-    const { setAddPost, thisUser, getPosts } = useContext(DataContext);
+    const { setAddPost, thisUser, getPosts, URL } = useContext(DataContext);
 
     const initialNewPostState = {
         title: '',
@@ -30,7 +30,7 @@ function NewPostModal(props) {
             tags: newPost.tags.split(', ')
         }
 
-        axios.post('http://localhost:4000/posts', newPostObj)
+        axios.post(`${URL}/posts`, newPostObj)
             .then(getPosts());
 
         setNewPost(initialNewPostState);
@@ -48,10 +48,8 @@ function NewPostModal(props) {
                         <textarea className='body-input' id='body' rows='10' cols='30' placeholder='say what you need to say' value={newPost.body} onChange={handleChange}/>
                         <div className='tags'>
                             <div>
-                                <label for='tag-input'>
-                                    enter tags separated by commas
-                                    <input className='tag-input' id='tags' name='tag-input' type='text' placeHolder='e.g. javscript, react, components' value={newPost.tags} onChange={handleChange} />
-                                </label>
+                                <label htmlFor='tag-input'>enter tags separated by commas</label>
+                                <input className='tag-input' id='tags' name='tag-input' type='text' placeholder='e.g. javscript, react, components' value={newPost.tags} onChange={handleChange} />
                                 
                             </div>
                             

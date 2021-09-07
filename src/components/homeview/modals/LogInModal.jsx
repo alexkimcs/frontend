@@ -17,7 +17,7 @@ function LogInModal() {
     const [existingUserLogin, setExistingUserLogin] = useState(true);
     const [userNotFound, setUserNotFound] = useState(false);
 
-    const { thisUser, setThisUser, setLogIn, initialUserState, isLoggedIn, setIsLoggedIn } = useContext(DataContext);
+    const { thisUser, setThisUser, setLogIn, initialUserState, isLoggedIn, setIsLoggedIn, URL } = useContext(DataContext);
 
     const handleChange = (event) => {
         setLoginState({ ...loginState, [event.target.id]: event.target.value });
@@ -40,7 +40,7 @@ function LogInModal() {
 
         console.log("login Data",loginData);
 
-        axios.post('http://localhost:4000/users/login', loginData)
+        axios.post(`${URL}/users/login`, loginData)
         .then((res) => {
             if (res.data){
                 console.log('login succeeded')
@@ -67,7 +67,7 @@ function LogInModal() {
                 password : loginState.newPassword
             }
 
-            axios.post('http://localhost:4000/users', newUser)
+            axios.post(`${URL}/users`, newUser)
             .then((res) => {
                 setThisUser(res.data);
                 localStorage.setItem('user', res.data.username)
