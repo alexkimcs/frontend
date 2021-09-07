@@ -1,7 +1,6 @@
 import React from 'react';
 
 function Comment({comment}) {
-
     return (
         <div className='comment-item'>
             <h4 className='comment-text'>{comment.username} <span style={{fontStyle: 'italic', fontSize: 'small'}}>said</span> : </h4>

@@ -6,8 +6,6 @@ import '../../../../styles/PostCard.css';
 import Tag from './Tag';
 
 function PostCard({ post }) {
-
-    console.log(post)
     return (
         <div className='PostCard'>
             <PostHeader author={post.username} title={post.title} time={post.createdAt} />

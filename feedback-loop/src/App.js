@@ -17,8 +17,7 @@ function App() {
     username: 'guest',
     email: ''
   }
-
-
+  
   // const initialPostsState = {
   //   posts: [],
   //   postsTotal: 0,
