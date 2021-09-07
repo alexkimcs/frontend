@@ -1,7 +1,9 @@
 .PostCard{
     border: 2px solid rgb(62, 62, 62);
-    margin: 1rem;
+    margin: 2rem auto;
     padding: 0.25rem;
+
+    max-width: 40rem;
 
     border-radius: 0.5rem;
 }
@@ -24,7 +26,18 @@
 .post-author {
     color: whitesmoke;
     margin: 0.25rem 1rem;
+    margin-right: 0.75rem;
 
+}
+
+.post-header-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.post-time {
+    color: rgb(254, 213, 77);
 }
 
 /*---------PostBody---------*/
@@ -35,6 +48,24 @@
 
 .body-text {
     padding: 1rem;
+    font-size: x-large;
+}
+
+/*----------Tags----------*/
+
+.tags-list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 1rem 3rem;
+    flex-wrap: wrap;
+}
+
+.Tag {
+    margin: 0rem 0.5rem;
+    background-color: rgba(254, 213, 77, 0.4);
+    padding: 0rem 0.5rem;
+    border-radius: 0.5rem;
 }
 
 /*---------PostInteractions---------*/
@@ -81,29 +112,56 @@
 }
 
 .comment-button {
-    border-radius: 0.25rem;
+    border-radius: 0.50rem;
     background-color:  rgb(62, 62, 62);
     color: whitesmoke;
     height: 2rem;
+    width: 4.5rem;
+    border: 1px solid rgb(62, 62, 62);
 }
 
 .comment-button:hover {
     color:rgb(254, 213, 77);
+    border: 1px solid rgb(254, 213, 77);
 }
 
-.comments-div {
-    
+.new-comment-input {
+    font-size: medium;
+    padding: 0.4rem;
+    border-radius: 0.25rem;
+    border: 1px solid rgb(254, 213, 77);
+    margin-right: 1rem;
+    width: 85%;
+}
+
+.new-comment-button {
+    border-radius: 0.25rem;
+    background-color:  whitesmoke;
+    color: rgb(62, 62, 62);
+    font-weight: bold;
+    height: 2rem;
+    border: 1px solid rgb(254, 213, 77);
 }
 
 .comment-item {
     background-color: rgb(62, 62, 62);
     
-    padding: 0.25rem 1rem;
+    padding: 0.50rem 1rem;
     margin: 0.25rem;
 
     border-radius: 0.25rem;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .comment-text {
     color: whitesmoke;
 }
+
+.comment-body {
+    color: whitesmoke;
+    margin-left: 1rem;
+}
+

@@ -15,10 +15,16 @@ function Searchbar(props) {
         setSearchItem('');
     }
     return (
+      
         <div className='Searchbar'>
+       
             <input className='searchbar-input' type='text' placeholder='search by: tags, posts, users' value={searchItem} onChange={handleChange} />
-            <button className='searchbar-submit' type='button' onClick={handleSubmit}>search</button>
+            <button className='searchbar-submit' type='button' onClick={handleSubmit}><span class='fas fa-search'></span></button>
+
+            
         </div>
+        
+        
     );
 }
 
