@@ -55,6 +55,7 @@ function App() {
       if (sessionUser) {
         setThisUser({...thisUser, username: sessionUser});
       }
+    }
 
     const displayTime = (time) => {
       

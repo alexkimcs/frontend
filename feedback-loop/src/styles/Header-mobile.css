@@ -1,0 +1,55 @@
+
+/* @media (max-width: 1245px) {
+    .Header {
+        padding: 0px;
+    }
+    .header-title {
+        flex:2;
+        text-align: center;
+
+    }
+    
+    .logo{
+        width: 100px;
+    }
+    .add-post-button {
+        display: flex;
+    }
+
+    .user-login-button{
+        display: flex;
+    }
+} */
+
+/* --iphone X -- */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3) { 
+
+    .Header{
+        flex-direction: column;
+        width: 100%; 
+        padding: 0px;   
+    }
+
+    .header-title {
+        flex:2;
+        text-align: center;
+            
+    } 
+
+     .title {
+        size: 0.1em!important;
+        margin: auto;
+    } 
+
+    .logo {
+       width: 1rem;
+    }
+
+    .UserDropdown {
+        align-items: center;
+    } 
+    
+}

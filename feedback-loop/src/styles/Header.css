@@ -18,7 +18,7 @@
 }
 
 .logo {
-    width: 130px;
+    width: 100px;
 
 }
 
@@ -39,12 +39,11 @@
 /*-------------------------------*/
 
 
-
 .Searchbar {
    display: flex;
    height: 40px;
    border: 1px solid rgb(62, 62, 62);
-
+    
 }
 
 .searchbar-input {
@@ -52,9 +51,9 @@
     padding: 0.5rem;
     width: 25rem;
 
+}
 
-.searchbar-input .searchbar-submit {
-    
+.searchbar-input , .searchbar-submit {
     display: flex;
     list-style: none;
     margin: 0rem 1rem;
@@ -71,29 +70,17 @@
     padding: 0 130px;
     border:none;
     cursor: pointer;
-}
+} 
 
 
-/* .Searchbar,  .Cancel-icon {
-    width: 40px;
-    text-align: center;
-    margin: 0 50px;
-    font-size: 18px;
-    cursor: pointer;
-    
-
-} */
-
-/* .searchbar-submit {
+.searchbar-submit {
     margin: 0rem 1rem;
     padding: 0.75rem 1.5rem;
-    
-
     color: whitesmoke;
     background-color: rgb(62, 62, 62);
     border: 2px solid whitesmoke;
     border-radius: 0.5rem;
-} */
+} 
 
 .searchbar-submit:hover {
     color: rgb(254, 213, 77);
@@ -110,10 +97,8 @@
     font-size: medium;
 
     color: rgb(62, 62, 62);
-    background-color: whitesmoke;
+    background-color: rgb(254, 213, 77);
 }
-
-
 
 
 .user-login-button:hover {
@@ -141,55 +126,4 @@
 .add-post-button:hover {
     background-color: rgb(34, 99, 34);
 }
-
-
-@media (max-width: 1245px) {
-    .Header {
-        padding: 0px;
-    }
-    .header-title {
-        flex:2;
-        text-align: center;
-
-    }
-}
-
-
-
-
-/* Iphone X
-@media only screen 
-  and (min-device-width: 375px) 
-  and (max-device-width: 812px) 
-  and (-webkit-min-device-pixel-ratio: 3) { 
-
-    .Header
-    {
-        flex-direction: column;
-        width: 100%;
-        
-    }
-    /* .header-title {
-        display: flex;
-            
-    } */
-
-    /* .title {
-        size: 0.1em!important;
-    } */
-
-    /* .Searchbar
-    {
-        display: none;
-    }
-
-    .logo
-    {
-       display: none;
-    }
-
-    .UserDropdown
-    {
-        display: none;
-    } */
 
