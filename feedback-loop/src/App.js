@@ -18,12 +18,6 @@ function App() {
     email: ''
   }
   
-  // const initialPostsState = {
-  //   posts: [],
-  //   postsTotal: 0,
-  //   trendingTopics: [],
-  // }
-  
   const [interactionState, setInteractionState] = useState(initialInteractionState);
   const [postsState, setPostsState] = useState(null);
   const [users, setUsers] = useState(null);
