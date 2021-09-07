@@ -54,6 +54,9 @@ function App() {
       const sessionUser = localStorage.getItem("user");
       if (sessionUser) {
         setThisUser({...thisUser, username: sessionUser});
+        setIsLoggedIn(true);
+      } else {
+        setIsLoggedIn(false);
       }
     }
 
@@ -109,8 +112,6 @@ function App() {
         let diff = viewTime.year - postTime.year;
         return `${diff} y`;
       }
-
-
     }
 
     useEffect(() => {
