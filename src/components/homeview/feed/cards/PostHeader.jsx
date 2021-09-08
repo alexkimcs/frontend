@@ -32,7 +32,7 @@ function PostHeader({title, author, time, ownerID, post}) {
                     <h3 className='post-time'>{displayTime(time)}</h3> 
                 </div>
             </div>
-            {(ownerID === thisUser._id) && 
+            {(ownerID === thisUser.userID) && 
                 <div>
                     <button className='edit-post-button' type='button' onClick={editPost} >edit post</button>
                     <button className='delete-post-button' type='button' onClick={deletePost} >delete post</button>

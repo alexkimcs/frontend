@@ -15,7 +15,7 @@ function App() {
 
   const initialUserState = {
     username: 'guest',
-    email: ''
+    userID: ''
   }
   // const URL = "https://feedbackloopbackend.herokuapp.com"
   const URL = "http://localhost:4000"
@@ -51,8 +51,8 @@ function App() {
     function checkSessionUser() {
       const sessionUser = localStorage.getItem("user");
       const sessionID = localStorage.getItem("userID");
-      if (sessionUser) {
-        setThisUser({...thisUser, username: sessionUser, id: sessionID});
+      if (sessionUser && sessionID) {
+        setThisUser({...thisUser, username: sessionUser, userID: sessionID});
         setIsLoggedIn(true);
       } else {
         setIsLoggedIn(false);
