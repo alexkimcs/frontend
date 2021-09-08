@@ -115,7 +115,7 @@ function LogInModal() {
                             {existingUserLogin && 
                                 <div className='input-div'>
                                     <input className='existing-user-input' type='text' placeholder='username' id="username" value={loginState.username} onChange={handleChange} />
-                                    <input className='existing-user-input' type='text' placeholder='password' id="password" value={loginState.password} onChange={handleChange} />
+                                    <input className='existing-user-input' type='password' placeholder='password' id="password" value={loginState.password} onChange={handleChange} />
                                     {(errorState.userNotFound) ? <p className='login-error'>incorrect username or password</p> : null }
                                 </div>
                             }
@@ -123,8 +123,8 @@ function LogInModal() {
                                 <div className='input-div'>
                                     <input className='existing-user-input' type='text' placeholder='username' id="newUsername" value={loginState.newUsername} onChange={handleChange} />
                                     <input className='existing-user-input' type='text' placeholder='email' id="email" value={loginState.email} onChange={handleChange} />
-                                    <input className='existing-user-input' type='text' placeholder='password' id="newPassword" value={loginState.newPassword} onChange={handleChange} />
-                                    <input className='existing-user-input' type='text' placeholder='verify password' id="verifyPassword" value={loginState.verifyPassword} onChange={handleChange} />
+                                    <input className='existing-user-input' type='password' placeholder='password' id="newPassword" value={loginState.newPassword} onChange={handleChange} />
+                                    <input className='existing-user-input' type='password' placeholder='verify password' id="verifyPassword" value={loginState.verifyPassword} onChange={handleChange} />
                                     {(errorState.passwordMismatch) ? <p className='login-error'>passwords must match</p> : null }
                                     {(errorState.duplicateUser) ? <p className='login-error'>username taken</p> : null }
                                 </div>
