@@ -126,3 +126,527 @@
     background-color: rgb(34, 99, 34);
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.Header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 2px solid whitesmoke;
+    flex-wrap: wrap;
+    color: whitesmoke;
+    background-color: rgb(62, 62, 62);
+    
+}
+
+.logo {
+    width: 100px;
+
+}
+
+.title {
+    margin: 0rem 2rem;
+}
+
+.logo-and-title-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.header-title {
+    font-family: 'Major Mono Display', monospace;
+}
+
+/*-------------------------------*/
+
+
+.Searchbar {
+   display: flex;
+   height: 40px;
+   border: 1px solid rgb(62, 62, 62);
+   
+}
+
+.searchbar-input {
+    margin: 0rem 0.5rem;
+    padding: 0.5rem;
+    width: 25rem;
+
+}
+
+.searchbar-input , .searchbar-submit {
+    display: flex;
+    list-style: none;
+    margin: 0rem 0rem;
+    height: 40px;
+    border: 2px solid whitesmoke;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    
+}
+
+.searchbar-submit {
+    margin: 0rem 1rem;
+    padding: 0.75rem 1.5rem;
+    color: whitesmoke;
+    background-color: rgb(62, 62, 62);
+    border: 2px solid whitesmoke;
+    border-radius: 0.5rem;
+    cursor: pointer;
+} 
+
+.searchbar-submit:hover {
+    color: rgb(254, 213, 77);
+    border: 2px solid rgb(254, 213, 77);
+}
+
+/*-------------------------------*/
+
+.user-login-button {
+    border: 2px solid rgb(254, 213, 77);
+    margin: 0rem 2rem;
+    padding: 0.25rem 1rem;
+    border-radius: 0.5rem;
+    font-size: medium;
+
+    color: rgb(62, 62, 62);
+    background-color: rgb(254, 213, 77);
+}
+
+
+.user-login-button:hover {
+    background-color: rgb(62, 62, 62);
+    color: whitesmoke;
+}
+
+.user-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.add-post-button {
+    border: 2px solid whitesmoke;
+    padding: 0.25rem 1rem;
+    border-radius: 0.5rem;
+    
+    font-size: medium;
+
+    color: whitesmoke;
+    background-color: rgb(79, 145, 79);
+}
+
+.add-post-button:hover {
+    background-color: rgb(34, 99, 34);
+}
+
+
+/* smaller device */
+@media only screen 
+  and (min-width: 230px)
+  and (max-width: 229px)
+  
+   { 
+    .Header{
+        display: flex;
+        flex-direction: column;
+        padding: 7px; 
+    }
+
+    .header-title {
+        text-align: center;
+            
+    } 
+    .logo {
+        width: 3.8rem;
+        margin-right: 0.8rem;
+    }
+
+     .title {
+        font-size:0.7rem;
+        margin: auto;
+    } 
+
+    .UserDropdown {
+       flex-direction: column;
+    }
+
+    .searchbar-input {
+        width: 20rem;
+        margin: 0.2rem;
+    }
+
+    .Searchbar {
+        justify-content: center;
+        align-items: center;
+        margin: 0.5rem;
+    }
+
+    .user-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .add-post-button {
+        margin: 0.2rem;   
+    }
+
+    .user-login-button{
+        margin: 0rem 0.8rem;
+    }
+} 
+
+
+/* Galaxy 55 */
+@media only screen 
+  and (min-width: 230px)
+  and (max-width: 319px)
+  
+   { 
+    .Header{
+        display: flex;
+        flex-direction: column;
+        padding: 7px; 
+    }
+
+    .header-title {
+        text-align: center;
+            
+    } 
+    .logo {
+        width: 3.8rem;
+        margin-right: 0.8rem;
+    }
+
+     .title {
+        font-size:0.7rem;
+        margin: auto;
+    } 
+
+    .UserDropdown {
+       flex-direction: column;
+    }
+
+    .searchbar-input {
+        width: 20rem;
+        margin: 0.2rem;
+    }
+
+    .Searchbar {
+        justify-content: center;
+        align-items: center;
+        margin: 0.5rem;
+    }
+
+    .user-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .add-post-button {
+        margin: 0.2rem;   
+    }
+
+    .user-login-button{
+        margin: 0rem 0.8rem;
+    }
+} 
+
+
+
+
+/* iPhone 5 */
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 373px) 
+   { 
+    .Header{
+        display: flex;
+        flex-direction: column;
+        padding: 8px; 
+    }
+
+    .header-title {
+        text-align: center;
+            
+    } 
+    .logo {
+        width: 3.3rem;
+        margin-right: 0.8rem;
+    }
+
+     .title {
+        font-size:0.7rem;
+        margin: auto;
+    } 
+
+    .UserDropdown {
+       flex-direction: column;
+    }
+
+    .searchbar-input {
+        width: 12.5rem;
+        margin: 0.5rem;
+    }
+
+    .Searchbar {
+        justify-content: center;
+        align-items: center;
+        margin: 0.8rem auto;
+    }
+
+    .user-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .add-post-button {
+        margin: 0.3rem;   
+    }
+
+    .user-login-button{
+        margin: 0rem 1rem;
+    }
+} 
+
+
+
+/* Iphone X */
+@media only screen and (min-width :374px) 
+and (max-width: 414px)
+{
+        .Header
+        {
+            display: flex;
+            flex-direction: column;
+            padding: 10px; 
+        }
+    
+        .header-title {
+            text-align: center;
+                
+        } 
+        .logo {
+            width: 4rem;
+            margin-right: 1rem;
+        }
+    
+         .title {
+            font-size: small;
+            margin: auto;
+        } 
+    
+        .UserDropdown {
+           flex-direction: column;
+        }
+    
+        .searchbar-input {
+            width: 15rem;
+            margin: 0.5rem;
+        }
+    
+        .Searchbar {
+            justify-content: center;
+            align-items: center;
+            margin: 0.8rem auto;
+        }
+    
+        .user-header {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+        }
+    
+        .add-post-button {
+            margin: 0.5rem;
+           
+        }
+    
+        .user-login-button{
+            margin: 0rem 1rem;
+        }
+}
+
+/* iPhone 6/7/8 Plus*/
+@media only screen and (min-width :413px)
+and (max-width: 736px) 
+{
+    
+        .Header
+        {
+            display: flex;
+            flex-direction: column;
+            padding: 10px; 
+        }
+    
+        .header-title {
+            text-align: center;
+                
+        } 
+        .logo {
+            width: 4rem;
+            margin-right: 1rem;
+        }
+    
+         .title {
+            font-size: small;
+            margin: auto;
+        } 
+    
+        .UserDropdown {
+           flex-direction: column;
+        }
+    
+        .searchbar-input {
+            width: 17.5rem;
+            margin: 0.5rem;
+        }
+    
+        .Searchbar {
+            justify-content: center;
+            align-items: center;
+            margin: 0.8rem auto;
+        }
+    
+        .user-header {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+        }
+    
+        .add-post-button {
+            margin: 0.5rem;
+           
+        }
+    
+        .user-login-button{
+            margin: 0rem 1rem;
+        }
+}
+
+/* iPad*/
+@media only screen and (min-width :735px)
+and (max-width: 1024px) 
+{
+    
+        .Header
+        {
+            display: flex;
+            padding: 10px; 
+        }
+    
+        .header-title {
+            text-align: center;
+                
+        } 
+        .logo {
+            width: 5rem;
+            margin-right: 1rem;
+        }
+    
+         .title {
+            font-size: medium;
+            margin: auto;
+        } 
+    
+        .UserDropdown {
+           flex-direction: column;
+        }
+    
+        .searchbar-input {
+            width: 20rem;
+            margin: 0.5rem;
+        }
+
+        .searchbar-submit {
+            margin: 0.5rem auto;
+        }
+    
+        .user-header {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-top: 1.5rem
+        }
+    
+        .add-post-button {
+            margin: 0.5rem;
+           
+        }
+    
+        .user-login-button{
+            margin: 0rem 1rem;
+        }
+}
+
+
+/* iPad Pro*/
+@media only screen and (min-width :1023px)
+and (max-width: 1366px) 
+{
+        .Header
+        {
+            display: flex;
+            padding: 15px; 
+        }
+    
+
+        .logo {
+            width: 7rem;
+            margin-right: 1rem;
+        }
+    
+         .title {
+            font-size: large;
+            margin: auto;
+        } 
+    
+        .UserDropdown {
+           flex-direction: column;
+        }
+    
+
+        .searchbar-input {
+            width: 35rem;
+            margin: 0.5rem;
+        }
+
+        .searchbar-submit {
+            margin: 0.5rem auto;
+            margin-right: 3rem;
+        }
+    
+        .user-header {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-top: 1.5rem
+        }
+    
+        .add-post-button {
+            margin: 0.2rem;
+        }
+    
+        .user-login-button{
+            margin: 0rem 2rem;
+            
+        }
+}
+
+

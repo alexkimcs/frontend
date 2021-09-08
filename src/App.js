@@ -15,9 +15,10 @@ function App() {
 
   const initialUserState = {
     username: 'guest',
-    email: ''
+    userID: ''
   }
-  const URL = "https://feedbackloopbackend.herokuapp.com"
+  // const URL = "https://feedbackloopbackend.herokuapp.com"
+  const URL = "http://localhost:4000"
   const [interactionState, setInteractionState] = useState(initialInteractionState);
   const [postsState, setPostsState] = useState(null);
   const [users, setUsers] = useState(null);
@@ -25,11 +26,13 @@ function App() {
   const [addPost, setAddPost] = useState(false);
   const [logIn, setLogIn] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  //console.log('THIS USER', thisUser)
   
     function getPosts() {
         axios.get(`${URL}/posts`)
             .then(res => {
-                setPostsState(res.data);
+                setPostsState(res.data.reverse());
             })
             .catch(console.error);
     }
@@ -45,8 +48,9 @@ function App() {
 
     function checkSessionUser() {
       const sessionUser = localStorage.getItem("user");
-      if (sessionUser) {
-        setThisUser({...thisUser, username: sessionUser});
+      const sessionID = localStorage.getItem("userID");
+      if (sessionUser && sessionID) {
+        setThisUser({...thisUser, username: sessionUser, userID: sessionID});
         setIsLoggedIn(true);
       } else {
         setIsLoggedIn(false);
