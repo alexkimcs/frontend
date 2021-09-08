@@ -102,6 +102,7 @@
     background-color: rgba(254, 213, 77, 0.4);
     padding: 0rem 0.5rem;
     border-radius: 0.5rem;
+    cursor: pointer;
 }
 
 /*---------PostInteractions---------*/
