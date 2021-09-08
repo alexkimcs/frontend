@@ -17,8 +17,8 @@ function App() {
     username: 'guest',
     userID: ''
   }
-  // const URL = "https://feedbackloopbackend.herokuapp.com"
-  const URL = "http://localhost:4000"
+  const URL = "https://feedbackloopbackend.herokuapp.com"
+  //const URL = "http://localhost:4000"
   const [interactionState, setInteractionState] = useState(initialInteractionState);
   const [postsState, setPostsState] = useState(null);
   const [users, setUsers] = useState(null);
