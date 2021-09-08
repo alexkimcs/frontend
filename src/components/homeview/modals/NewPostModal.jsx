@@ -5,7 +5,7 @@ import axios from 'axios';
 
 function NewPostModal(props) {
 
-    const { setAddPost, thisUser, getPosts, URL } = useContext(DataContext);
+    const { setAddPost, thisUser, setPostsState, URL } = useContext(DataContext);
 
     const initialNewPostState = {
         title: '',
@@ -23,7 +23,7 @@ function NewPostModal(props) {
     const handleSubmit = () => {
         let thisOwner = '';
         if (thisUser.username !== 'guest') {
-            thisOwner = thisUser._id;
+            thisOwner = thisUser.userID;
         }
 
         let newPostObj = {
@@ -35,11 +35,11 @@ function NewPostModal(props) {
         }
 
         axios.post(`${URL}/posts`, newPostObj)
-            .then(getPosts());
-
+        .then((res) => {
+            setPostsState(res.data.reverse());
+        })
         setNewPost(initialNewPostState);
         setAddPost(false);
-
     }
 
     return (
