@@ -13,9 +13,16 @@ function LogInModal() {
         newPassword: '',
         verifyPassword: ''
     };
+
+    const initialErrorState = {
+        userNotFound: false,
+        passwordMismatch: false,
+        duplicateUser: false
+    };
+
     const [loginState, setLoginState] = useState(initialLoginState);
     const [existingUserLogin, setExistingUserLogin] = useState(true);
-    const [userNotFound, setUserNotFound] = useState(false);
+    const [errorState, setErrorState] = useState(initialErrorState);
 
     const { thisUser, setThisUser, setLogIn, initialUserState, isLoggedIn, setIsLoggedIn, URL } = useContext(DataContext);
 
@@ -25,13 +32,12 @@ function LogInModal() {
 
     const logOut = () => {
         setThisUser(initialUserState);
-        setUserNotFound(false);
+        setErrorState(initialErrorState);
         setIsLoggedIn(false);
         localStorage.clear();
     };
 
     const handleExistingSubmit = async () => {
-        console.log("logging in");
 
         let loginData = {
             username: loginState.username,
@@ -43,30 +49,25 @@ function LogInModal() {
         axios.post(`${URL}/users/login`, loginData)
         .then((res) => {
             if (res.data){
-                console.log('login succeeded')
                 setThisUser({username: res.data.username, userID: res.data._id});
                 localStorage.setItem('user', res.data.username)
                 localStorage.setItem('userID', res.data._id)
-                console.log("username", res.data.username)
                 setIsLoggedIn(true);
-                setUserNotFound(false);
+                setErrorState({userNotFound:false});
                 setLogIn(false);
             }
             else{
-                setUserNotFound(true);
-                console.log('login failed');
+                setErrorState({userNotFound:true});
             }
         })
         
     };
 
     const handleNewSubmit = () => {
-        console.log("creating account");
         
         if (loginState.newPassword !== loginState.verifyPassword){
-            console.log("error");
+            setErrorState({passwordMismatch:true});
         } else{
-            
             const newUser = {
                 username : loginState.newUsername,
                 email : loginState.email,
@@ -75,24 +76,27 @@ function LogInModal() {
 
             axios.post(`${URL}/users`, newUser)
             .then((res) => {
-                setThisUser({username: res.data.username, userID: res.data._id});
-                localStorage.setItem('user', res.data.username)
-                localStorage.setItem('userID', res.data._id)
-                console.log(res.data.username)
-                setIsLoggedIn(true);
-                setLogIn(false);
+                if (!res.data.username){
+                    setErrorState({duplicateUser:true});
+                } else {
+                    setThisUser({username: res.data.username, userID: res.data._id});
+                    localStorage.setItem('user', res.data.username)
+                    localStorage.setItem('userID', res.data._id)
+                    setIsLoggedIn(true);
+                    setLogIn(false);
+                }
             })
         }    
     }
 
     const closeModal = () => {
+        setErrorState(initialErrorState);
         setLogIn(false);
-        setUserNotFound(false);
     }
  
     useEffect(() => {
         console.log("thisUser", thisUser)
-    }, [existingUserLogin, thisUser, userNotFound, isLoggedIn])
+    }, [existingUserLogin, thisUser, isLoggedIn])
 
     return (
         <div className='LogInModal'>
@@ -112,7 +116,7 @@ function LogInModal() {
                                 <div className='input-div'>
                                     <input className='existing-user-input' type='text' placeholder='username' id="username" value={loginState.username} onChange={handleChange} />
                                     <input className='existing-user-input' type='text' placeholder='password' id="password" value={loginState.password} onChange={handleChange} />
-                                    {(userNotFound) ? <p className='no-user-found'>login failed</p> : null }
+                                    {(errorState.userNotFound) ? <p className='login-error'>incorrect username or password</p> : null }
                                 </div>
                             }
                             {!existingUserLogin && 
@@ -121,6 +125,8 @@ function LogInModal() {
                                     <input className='existing-user-input' type='text' placeholder='email' id="email" value={loginState.email} onChange={handleChange} />
                                     <input className='existing-user-input' type='text' placeholder='password' id="newPassword" value={loginState.newPassword} onChange={handleChange} />
                                     <input className='existing-user-input' type='text' placeholder='verify password' id="verifyPassword" value={loginState.verifyPassword} onChange={handleChange} />
+                                    {(errorState.passwordMismatch) ? <p className='login-error'>passwords must match</p> : null }
+                                    {(errorState.duplicateUser) ? <p className='login-error'>username taken</p> : null }
                                 </div>
                             }
                         </div>
