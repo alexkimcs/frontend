@@ -47,7 +47,7 @@ function EditPostModal({post, setShowEditModal}) {
                     
                     <div className='form'>
                         <input className='title-input' id='title' type='text' placeholder='title' value={editedPost.title} onChange={handleChange}/>
-                        <textarea className='body-input' id='body' rows='10' cols='30' placeholder='say what you need to say' value={editedPost.body} onChange={handleChange}/>
+                        <textarea className='body-input' id='body' rows='10' cols='30' placeholder='say what you need to say, use backticks (`) for code blocks' value={editedPost.body} onChange={handleChange}/>
                         <div className='tags'>
                             <div>
                                 <label htmlFor='tag-input'>enter tags separated by commas</label>
