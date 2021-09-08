@@ -8,7 +8,7 @@ import Tag from './Tag';
 function PostCard({ post }) {
     return (
         <div className='PostCard'>
-            <PostHeader author={post.username} title={post.title} time={post.createdAt} />
+            <PostHeader author={post.username} title={post.title} time={post.createdAt} ownerID={post.owner} post={post} />
             <PostBody body={post.body}/>
             <div className='tags-list'><p>tags:</p>{post.tags.map(tag => {return <Tag key={tag} tag={tag} /> })}</div>
             <hr />

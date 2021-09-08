@@ -15,19 +15,23 @@ function NewPostModal(props) {
 
     const [newPost, setNewPost] = useState(initialNewPostState);
 
-    const languageTags = ['HTML', 'CSS', 'JavaScript', 'Python', 'C#', 'C++', 'Git', 'CLI'];
-
     const handleChange = (e) => {
         setNewPost({...newPost, [e.target.id]: e.target.value})
         console.log(newPost);
     }
 
     const handleSubmit = () => {
+        let thisOwner = '';
+        if (thisUser.username !== 'guest') {
+            thisOwner = thisUser._id;
+        }
+
         let newPostObj = {
             username: thisUser.username,
             title: newPost.title,
             body: newPost.body,
-            tags: newPost.tags.split(', ')
+            tags: newPost.tags.split(', '),
+            owner: thisOwner
         }
 
         axios.post(`${URL}/posts`, newPostObj)

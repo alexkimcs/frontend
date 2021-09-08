@@ -44,14 +44,20 @@ function LogInModal() {
         .then((res) => {
             if (res.data){
                 console.log('login succeeded')
-                setThisUser(res.data);
+                setThisUser({username: res.data.username, userID: res.data._id});
                 localStorage.setItem('user', res.data.username)
+                localStorage.setItem('userID', res.data._id)
                 console.log("username", res.data.username)
+                setIsLoggedIn(true);
+                setUserNotFound(false);
+                setLogIn(false);
             }
             else{
+                setUserNotFound(true);
                 console.log('login failed');
             }
         })
+        
     };
 
     const handleNewSubmit = () => {
@@ -69,13 +75,19 @@ function LogInModal() {
 
             axios.post(`${URL}/users`, newUser)
             .then((res) => {
-                setThisUser(res.data);
+                setThisUser({username: res.data.username, userID: res.data._id});
                 localStorage.setItem('user', res.data.username)
+                localStorage.setItem('userID', res.data._id)
                 console.log(res.data.username)
+                setIsLoggedIn(true);
+                setLogIn(false);
             })
-
         }    
+    }
 
+    const closeModal = () => {
+        setLogIn(false);
+        setUserNotFound(false);
     }
  
     useEffect(() => {
@@ -123,7 +135,7 @@ function LogInModal() {
                         {!isLoggedIn && !existingUserLogin && 
                             <button className='login-form-button' type='button' onClick={handleNewSubmit} >create account</button>
                         }
-                        <button className='login-form-button' type='button' onClick={() => setLogIn(false)} >close</button>
+                        <button className='login-form-button' type='button' onClick={closeModal} >close</button>
                     </div>
                 </div>
             </div>

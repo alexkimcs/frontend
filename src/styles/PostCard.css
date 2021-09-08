@@ -15,6 +15,10 @@
     padding: 0.5rem 1rem;
 
     border-radius: 0.25rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 
 }
 
@@ -38,6 +42,36 @@
 
 .post-time {
     color: rgb(254, 213, 77);
+}
+
+.edit-post-button {
+    border-radius: 0.50rem;
+    background-color:  rgb(62, 62, 62);
+    color: rgb(254, 213, 77);
+    height: 2rem;
+    width: 4.5rem;
+    border: 1px solid rgb(254, 213, 77);
+    margin-right: 0.25rem;
+}
+
+.edit-post-button:hover {
+    background-color: rgb(254, 213, 77);
+    color: rgb(62, 62, 62);
+}
+
+.delete-post-button {
+    border-radius: 0.50rem;
+    background-color:  rgb(62, 62, 62);
+    color: rgb(206, 67, 67);
+    height: 2rem;
+    width: 4.5rem;
+    border: 1px solid rgb(206, 67, 67);
+    margin-left: 0.25rem;
+}
+
+.delete-post-button:hover {
+    background-color: rgb(206, 67, 67);
+    color: rgb(62, 62, 62);
 }
 
 /*---------PostBody---------*/
