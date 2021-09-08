@@ -71,6 +71,7 @@ function LogInModal() {
             .then((res) => {
                 setThisUser(res.data);
                 localStorage.setItem('user', res.data.username)
+                localStorage.setItem('userID', res.data._id)
                 console.log(res.data.username)
             })
 
