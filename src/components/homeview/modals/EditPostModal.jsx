@@ -5,7 +5,7 @@ import axios from 'axios';
 
 function EditPostModal({post, setShowEditModal}) {
 
-    const {getPosts, URL } = useContext(DataContext);
+    const {setPostsState, URL } = useContext(DataContext);
 
     const initialEditPostState = {
         title: post.title,
@@ -31,7 +31,9 @@ function EditPostModal({post, setShowEditModal}) {
         console.log('edited post obj', editedPostObj)
 
         axios.put(`${URL}/posts/${post._id}`, editedPostObj)
-            .then(getPosts());
+        .then((res) => {
+            setPostsState(res.data.reverse());
+        })
 
         setEditedPost(initialEditPostState);
         setShowEditModal(false);

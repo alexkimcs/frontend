@@ -6,7 +6,7 @@ import EditPostModal from '../../modals/EditPostModal';
 
 function PostHeader({title, author, time, ownerID, post}) {
 
-    const { displayTime, thisUser, URL } = useContext(DataContext);
+    const { displayTime, thisUser, setPostsState, URL } = useContext(DataContext);
 
     const [showEditModal, setShowEditModal] = useState(false);
 
@@ -17,7 +17,9 @@ function PostHeader({title, author, time, ownerID, post}) {
     const deletePost = () => {
         console.log(post._id)
         axios.delete(`${URL}/posts/${post._id}`)
-            .catch(console.error);
+        .then((res) => {
+            setPostsState(res.data.reverse());
+        })
     }
 
     return (

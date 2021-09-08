@@ -27,13 +27,12 @@ function App() {
   const [logIn, setLogIn] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  console.log('THIS USER', thisUser)
+  //console.log('THIS USER', thisUser)
   
     function getPosts() {
         axios.get(`${URL}/posts`)
             .then(res => {
-                console.log(res.data);
-                setPostsState(res.data);
+                setPostsState(res.data.reverse());
             })
             .catch(console.error);
     }
@@ -41,7 +40,6 @@ function App() {
     function getUsers() {
       axios.get(`${URL}/users`)
         .then(res => {
-          console.log(res.data)
           setUsers(res.data);
         })
         .catch(console.error);
