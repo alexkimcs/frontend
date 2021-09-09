@@ -61,14 +61,14 @@
 .delete-post-button {
     border-radius: 0.25rem;
     background-color:  rgb(62, 62, 62);
-    color: rgb(206, 67, 67);
-    border: 1px solid rgb(206, 67, 67);
+    color: rgb(247, 33, 25);
+    border: 1px solid rgb(247, 33, 25);
     margin-left: 0.25rem;
     padding: 0.25rem;
 }
 
 .delete-post-button:hover {
-    background-color: rgb(206, 67, 67);
+    background-color: rgb(247, 33, 25);
     color: rgb(62, 62, 62);
 }
 
@@ -147,12 +147,11 @@
 }
 
 .comment-button {
-    border-radius: 0.50rem;
+    border-radius: 0.25rem;
     background-color:  rgb(62, 62, 62);
     color: whitesmoke;
-    height: 2rem;
-    width: 4.5rem;
-    border: 1px solid rgb(62, 62, 62);
+    border: 1px solid whitesmoke;
+    padding: 0.25rem;
 }
 
 .comment-button:hover {
@@ -171,11 +170,43 @@
 
 .new-comment-button {
     border-radius: 0.25rem;
-    background-color:  whitesmoke;
-    color: rgb(62, 62, 62);
-    font-weight: bold;
-    height: 2rem;
+    background-color:  rgb(62, 62, 62);
+    color: whitesmoke;
+    border: 1px solid whitesmoke;
+    padding: 0.25rem;
+}
+
+.new-comment-button:hover {
+    color:rgb(254, 213, 77);
     border: 1px solid rgb(254, 213, 77);
+}
+
+.add-new-comment-button {
+    border-radius: 0.25rem;
+    background-color:  rgb(62, 62, 62);
+    color: rgb(254, 213, 77);
+    border: 1px solid rgb(254, 213, 77);
+    padding: 0.25rem;
+}
+
+.add-new-comment-button:hover {
+    color:rgb(62, 62, 62);
+    background-color: rgb(254, 213, 77);
+    border: 1px solid rgb(62, 62, 62);
+}
+
+.cancel-comment-button {
+    border-radius: 0.25rem;
+    background-color:  rgb(62, 62, 62);
+    color: rgb(247, 33, 25);
+    border: 1px solid rgb(247, 33, 25);
+    margin-left: 0.25rem;
+    padding: 0.25rem;
+}
+
+.cancel-comment-button:hover {
+    background-color:  rgb(247, 33, 25);
+    color: rgb(62, 62, 62);
 }
 
 .comment-item {
@@ -236,21 +267,21 @@
 .delete-comment-button {
     border-radius: 0.25rem;
     background-color:  rgb(62, 62, 62);
-    color: rgb(206, 67, 67);
-    border: 1px solid rgb(206, 67, 67);
+    color: rgb(247, 33, 25);
+    border: 1px solid rgb(247, 33, 25);
     margin-left: 0.25rem;
     padding: 0.25rem;
 }
 
 .delete-comment-button:hover {
-    background-color:  rgb(206, 67, 67);
+    background-color:  rgb(247, 33, 25);
     color: rgb(62, 62, 62);
 }
 
 .no-interaction {
     font-size: small;
     color: whitesmoke;
-    background-color: rgb(206, 67, 67);
+    background-color: rgb(247, 33, 25);
     padding: 0.25rem;
     border-radius: 0.25rem;
 }
