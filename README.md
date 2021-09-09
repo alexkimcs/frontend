@@ -5,26 +5,40 @@ Note sharing app for engineers to connect, collaborate, and help their peers. Th
 ## Deployed Website
 https://feedbackloopapp.herokuapp.com/
 
-## Github Repo
-
-
 ## User stories
 - I am a student in a software engineering intensive looking to connect and collaborate with my peers.
 - I am a coding wizard looking to help peers when they are stuck.
 - I am part of a coding team looking to encourage my peers in their design.
 - I want to stay in the loop and see what projects and languages that people are talking - about most.
 
-## MVP Functionality
+## Functionality
 ### Login System:
  - Guest can only view the posts.  
  - Login is required for users to make interactions on the application, such as make posts, likes, leave comments.
  
  ### Home Feed:
- - Comments are displayed in chronological order, Pagination
- - User can filter (search) by tags:  Post type, Language, Title, and
+ - Posts are displayed in reverse chronological order (newest at the top)
+ - Comments are displayed in chronological order
+ - User can click on a tag to filter (search) for posts containing that word
  - Mobile-first and responsive layout
 
-## Wireframes
+### Posting
+- When logged in, users can click the 'new post' button to create a post
+- New posts require a title and and a body, but tag lists are optional
+- Users have the ability to edit and delete posts that they have created
+
+### Commenting
+- When logged in, users can comment on posts
+- Users have the ability to edit and delete comments that they have made
+
+### Liking
+- When logged in, users have the ability to like and unlike posts
+- Likes are stored in the Post schema as an array of objects
+- Each object in the array contains the userID and username of the user who liked the post
+- Users can only like a post once
+- Since likes are stored with the userID and username, users can see posts they've liked during previous sessions
+
+## Screenshots
 <img width="587" alt="Screen Shot 2021-09-09 at 11 49 02 AM" src="https://media.git.generalassemb.ly/user/36585/files/4b566e00-1164-11ec-981f-3453437d65f0">
 
 <img width="585" alt="Screen Shot 2021-09-09 at 11 52 13 AM" src="https://media.git.generalassemb.ly/user/36585/files/c029a800-1164-11ec-9d3e-2d0882d141f7">
