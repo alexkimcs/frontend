@@ -39,7 +39,7 @@ https://feedbackloopapp.herokuapp.com/
 - Since likes are stored with the userID and username, users can see posts they've liked during previous sessions
 
 ## Feedback Loop Data Flow
-<img width="600" alt="data flow" src="https://user-images.githubusercontent.com/63392756/132751497-9219f0c6-ad1c-475d-aca6-195954cfd57c.png">
+<img width="600" alt="data flow" src="https://user-images.githubusercontent.com/37776449/132763768-d5c69077-4202-43f4-96b2-5b58d1107d14.png">
 
 ## Component Tree
 ![Screen Shot 2021-09-09 at 1 30 31 PM (2)](https://user-images.githubusercontent.com/63392756/132734404-da2c429c-4701-449b-9412-0233d8b326d6.png)
