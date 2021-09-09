@@ -103,22 +103,23 @@ function PostInteractions({ id, likes, comments }) {
                     }
                 </div>
                 {(thisUser.username !== 'guest') &&
-                    <button className='comment-button' onClick={() => setAddNew(true)} >comment</button>
+                    <button className='comment-button' onClick={() => setAddNew(true)} ><span className='fas fa-pen-fancy'></span></button>
                 }
                 
             </div>
             
             <hr />
             <div className='comments-div'>
-                {comments.map((comment)=> {
-                    return <Comment key={id + '-comment-' + (comments.indexOf(comment) + 1)} comment={comment} id={id} />
-                })}
                 {addNew &&
                     <div className='comment-item'>
                         <input className='new-comment-input' type='text' placeholder='add comment here' value={commentText} onChange={handleCommentChange} />
-                        <button className='new-comment-button' type='button' onClick={createComment}>post</button>
+                        <button className='add-new-comment-button' type='button' onClick={createComment}><span className='fas fa-plus'></span></button>
+                        <button className='cancel-comment-button' type='button' onClick={() => setAddNew(false)}><span className='fas fa-ban'></span></button>
                     </div>
                 }
+                {comments.map((comment)=> {
+                    return <Comment key={id + '-comment-' + (comments.indexOf(comment) + 1)} comment={comment} id={id} />
+                })}
             </div>
             
             
