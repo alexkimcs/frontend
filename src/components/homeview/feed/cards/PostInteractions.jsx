@@ -80,6 +80,12 @@ function PostInteractions({ id, likes, comments }) {
         setAddNew(false);
         setCommentText('');
     }
+
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            createComment();
+        }
+    }
     
 
 
@@ -110,9 +116,9 @@ function PostInteractions({ id, likes, comments }) {
             <div className='comments-div'>
                 {addNew &&
                     <div className='comment-item'>
-                        <input className='new-comment-input' type='text' placeholder='add comment here' value={commentText} onChange={handleCommentChange} />
+                        <input className='new-comment-input' type='text' placeholder='add comment here' value={commentText} onChange={handleCommentChange} onKeyDown={handleKeyDown} />
                         <button className='add-new-comment-button' type='button' onClick={createComment}><span className='fas fa-plus'></span></button>
-                        <button className='cancel-comment-button' type='button' onClick={() => setAddNew(false)}><span className='fas fa-ban'></span></button>
+                        <button className='cancel-comment-button' type='button' onClick={() => setAddNew(false)} ><span className='fas fa-ban'></span></button>
                     </div>
                 }
                 {comments.map((comment)=> {
