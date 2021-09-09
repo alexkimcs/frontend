@@ -31,29 +31,33 @@ function PostInteractions({ id, likes, comments }) {
         // e.targetclassName = "far fa-heart like-icon" ;
 
         // let tmp = postLikes
-        if (isLiked) {
-            let newLikes = [...postLikes]
-            let index = newLikes.indexOf({id: thisUser.userID, username: thisUser.username});
-            newLikes.splice(index, 1);
-            setPostLikes(newLikes);
-            
-            axios.put(`${URL}/posts/${id}`, {likes: newLikes})
-                .then(res => {
-                    setIsLiked(false)
-                    setPostsState(res.data.reverse());
-                })
+
+        if (thisUser.username === 'guest') {
+            window.alert('you must be logged in to interact with posts');
         } else {
-            let newLikes = [...postLikes]
-            newLikes.push({id: thisUser.userID, username: thisUser.username})
-            setPostLikes(newLikes)
-            
-            axios.put(`${URL}/posts/${id}`, {likes: newLikes})
-                .then(res => {
-                    setIsLiked(true)
-                    setPostsState(res.data.reverse());
-                })
+            if (isLiked) {
+                let newLikes = [...postLikes]
+                let index = newLikes.indexOf({id: thisUser.userID, username: thisUser.username});
+                newLikes.splice(index, 1);
+                setPostLikes(newLikes);
+                
+                axios.put(`${URL}/posts/${id}`, {likes: newLikes})
+                    .then(res => {
+                        setIsLiked(false)
+                        setPostsState(res.data.reverse());
+                    })
+            } else {
+                let newLikes = [...postLikes]
+                newLikes.push({id: thisUser.userID, username: thisUser.username})
+                setPostLikes(newLikes)
+                
+                axios.put(`${URL}/posts/${id}`, {likes: newLikes})
+                    .then(res => {
+                        setIsLiked(true)
+                        setPostsState(res.data.reverse());
+                    })
+            }
         }
-        
         
     }
 
@@ -92,7 +96,10 @@ function PostInteractions({ id, likes, comments }) {
                     }
                     <h4 className='likes-num'>{(postLikes === []) ? 0 : postLikes.length}</h4>
                 </div>
-                <button className='comment-button' onClick={() => setAddNew(true)} >comment</button>
+                {(thisUser.username !== 'guest') &&
+                    <button className='comment-button' onClick={() => setAddNew(true)} >comment</button>
+                }
+                
             </div>
             
             <hr />
