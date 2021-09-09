@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Searchbar from './Searchbar';
 import '../../../styles/Header.css';
 import UserDropdown from './UserDropdown';
 import AddPost from './AddPost';
 import logo from '../../../logo-5.png';
+import { DataContext } from '../../hidden/DataContext';
 
 
 function Header(props) {
+
+    const {thisUser} = useContext(DataContext);
     return (
         <div className='Header'>
             <div className='logo-and-title-div'>
@@ -23,7 +26,10 @@ function Header(props) {
             
             <Searchbar />
             <div className='user-header'>
-                <AddPost />
+                {(thisUser.username !== 'guest') &&
+                    <AddPost />
+                }
+                
                 <UserDropdown />
             </div>
             
