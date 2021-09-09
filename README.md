@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+![logo-5 21ece202 (1)](https://media.git.generalassemb.ly/user/36585/files/e51f1a80-1166-11ec-98f8-643554db0e5b)
+# Feedback Loop
+Note sharing app for engineers to connect, collaborate, and help their peers. This is a full-stack application built on the MERN stack (MongoDB, Express, React, and Node).
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Deployed Website
+https://feedbackloopapp.herokuapp.com/
 
-## Available Scripts
+## User stories
+- I am a student in a software engineering intensive looking to connect and collaborate with my peers.
+- I am a coding wizard looking to help peers when they are stuck.
+- I am part of a coding team looking to encourage my peers in their design.
+- I want to stay in the loop and see what projects and languages that people are talking - about most.
 
-In the project directory, you can run:
+## Functionality
+### Login System:
+ - Guest can only view the posts.  
+ - Login is required for users to make interactions on the application, such as make posts, likes, leave comments.
+ 
+ ### Home Feed:
+ - Posts are displayed in reverse chronological order (newest at the top)
+ - Comments are displayed in chronological order
+ - User can click on a tag to filter (search) for posts containing that word
+ - Mobile-first and responsive layout
 
-### `npm start`
+### Posting
+- When logged in, users can click the 'new post' button to create a post
+- New posts require a title and and a body, but tag lists are optional
+- Users have the ability to edit and delete posts that they have created
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Commenting
+- When logged in, users can comment on posts
+- Users have the ability to edit and delete comments that they have made
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Liking
+- When logged in, users have the ability to like and unlike posts
+- Likes are stored in the Post schema as an array of objects
+- Each object in the array contains the userID and username of the user who liked the post
+- Users can only like a post once
+- Since likes are stored with the userID and username, users can see posts they've liked during previous sessions
+## Component Tree
+![Screen Shot 2021-09-09 at 1 30 31 PM (2)](https://user-images.githubusercontent.com/63392756/132734404-da2c429c-4701-449b-9412-0233d8b326d6.png)
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Screenshots
+<img width="587" alt="Screen Shot 2021-09-09 at 11 49 02 AM" src="https://media.git.generalassemb.ly/user/36585/files/4b566e00-1164-11ec-981f-3453437d65f0">
 
-### `npm run build`
+<img width="585" alt="Screen Shot 2021-09-09 at 11 52 13 AM" src="https://media.git.generalassemb.ly/user/36585/files/c029a800-1164-11ec-9d3e-2d0882d141f7">
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<img width="589" alt="Screen Shot 2021-09-09 at 12 02 50 PM" src="https://media.git.generalassemb.ly/user/36585/files/05020e80-1166-11ec-963a-ab1b3f3c2043">
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<img width="591" alt="Screen Shot 2021-09-09 at 11 59 39 AM" src="https://media.git.generalassemb.ly/user/36585/files/8ad18a00-1165-11ec-8ad6-d5acc29ff420">
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<img width="590" alt="Screen Shot 2021-09-09 at 12 01 14 PM" src="https://media.git.generalassemb.ly/user/36585/files/ba809200-1165-11ec-9e9c-28f78816644a">
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Group members:
+- Michael Dunn O'Connor, Scrum Master (https://git.generalassemb.ly/dunnoconnor)
+- Cole Rener, Front End (https://git.generalassemb.ly/crener)
+- Menty Sisay, Backend (https://git.generalassemb.ly/mentysisay)
+- Nita Lo, Front End (https://git.generalassemb.ly/nlo88)

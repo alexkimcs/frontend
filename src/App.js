@@ -17,7 +17,7 @@ function App() {
     username: 'guest',
     userID: ''
   }
-
+  
   const URL = process.env.URL; 
   //const URL = "http://localhost:4000"
   const [interactionState, setInteractionState] = useState(initialInteractionState);
