@@ -36,6 +36,11 @@
     font-family: 'Major Mono Display', monospace;
 }
 
+.home-link {
+    text-decoration: none;
+    color: whitesmoke;
+}
+
 /*-------------------------------*/
 
 .Searchbar {

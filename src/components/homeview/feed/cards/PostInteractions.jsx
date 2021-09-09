@@ -19,7 +19,7 @@ function PostInteractions({ id, likes, comments }) {
                 let thisPost = res.data.find(post => post._id === id);
                 let thisPostLikes = thisPost.likes;
                 let liked = thisPostLikes.find(like => like.id === thisUser.userID);
-                if (liked !== undefined) {
+                if (liked) {
                     setIsLiked(true);
                 }
             })

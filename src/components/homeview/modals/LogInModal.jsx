@@ -31,10 +31,11 @@ function LogInModal() {
     };
 
     const logOut = () => {
-        setThisUser(initialUserState);
+        setThisUser({username: 'guest', userID: ''});
         setErrorState(initialErrorState);
         setIsLoggedIn(false);
-        localStorage.clear();
+        localStorage.setItem('user', 'guest');
+        localStorage.setItem('userID', '');
     };
 
     const handleExistingSubmit = async () => {
@@ -49,7 +50,7 @@ function LogInModal() {
         axios.post(`${URL}/users/login`, loginData)
         .then((res) => {
             if (res.data){
-                setThisUser({username: res.data.username, userID: res.data._id});
+                setThisUser(initialUserState);
                 localStorage.setItem('user', res.data.username)
                 localStorage.setItem('userID', res.data._id)
                 setIsLoggedIn(true);
