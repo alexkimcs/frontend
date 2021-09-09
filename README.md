@@ -2,6 +2,12 @@
 # Feedback Loop
 Note sharing app for engineers to connect, collaborate, and help their peers. This is a full-stack application built on the MERN stack (MongoDB, Express, React, and Node).
 
+## Deployed Website
+https://feedbackloopapp.herokuapp.com/
+
+## Github Repo
+
+
 ## User stories
 - I am a student in a software engineering intensive looking to connect and collaborate with my peers.
 - I am a coding wizard looking to help peers when they are stuck.
