@@ -36,8 +36,8 @@ function PostHeader({title, author, time, ownerID, post}) {
             </div>
             {(ownerID === thisUser.userID) && 
                 <div>
-                    <button className='edit-post-button' type='button' onClick={editPost} >edit post</button>
-                    <button className='delete-post-button' type='button' onClick={deletePost} >delete post</button>
+                    <button className='edit-post-button' type='button' onClick={editPost} ><span className='far fa-edit'></span></button>
+                    <button className='delete-post-button' type='button' onClick={deletePost} ><span className='far fa-trash-alt'></span></button>
                 </div>
             }
         </div>

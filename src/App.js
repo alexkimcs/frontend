@@ -17,7 +17,8 @@ function App() {
     username: 'guest',
     userID: ''
   }
-  const URL = "https://feedbackloopbackend.herokuapp.com"
+  
+  const URL = process.env.URL; 
   //const URL = "http://localhost:4000"
   const [interactionState, setInteractionState] = useState(initialInteractionState);
   const [postsState, setPostsState] = useState(null);
@@ -98,8 +99,13 @@ function App() {
               return `${diff} h`;
             }
           } else {
-            let diff = viewTime.day - postTime.day;
-            return `${diff} d`;
+            if (viewTime.hour < 23) {
+              let diff = (viewTime.hour + 23) - postTime.hour;
+              return `${diff} h`
+            } else {
+              let diff = viewTime.day - postTime.day;
+              return `${diff} d`;
+            }
           }
         } else {
           let diff = viewTime.month - postTime.month;

@@ -30,6 +30,18 @@ function LogInModal() {
         setLoginState({ ...loginState, [event.target.id]: event.target.value });
     };
 
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            handleExistingSubmit();
+        }
+    }
+
+    const newHandleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            handleNewSubmit();
+        }
+    }
+
     const logOut = () => {
         setThisUser(initialUserState);
         setErrorState(initialErrorState);
@@ -55,6 +67,7 @@ function LogInModal() {
                 setIsLoggedIn(true);
                 setErrorState({userNotFound:false});
                 setLogIn(false);
+
             }
             else{
                 setErrorState({userNotFound:true});
@@ -115,7 +128,7 @@ function LogInModal() {
                             {existingUserLogin && 
                                 <div className='input-div'>
                                     <input className='existing-user-input' type='text' placeholder='username' id="username" value={loginState.username} onChange={handleChange} />
-                                    <input className='existing-user-input' type='password' placeholder='password' id="password" value={loginState.password} onChange={handleChange} />
+                                    <input className='existing-user-input' type='password' placeholder='password' id="password" value={loginState.password} onKeyDown={handleKeyDown} onChange={handleChange} />
                                     {(errorState.userNotFound) ? <p className='login-error'>incorrect username or password</p> : null }
                                 </div>
                             }
@@ -124,7 +137,7 @@ function LogInModal() {
                                     <input className='existing-user-input' type='text' placeholder='username' id="newUsername" value={loginState.newUsername} onChange={handleChange} />
                                     <input className='existing-user-input' type='text' placeholder='email' id="email" value={loginState.email} onChange={handleChange} />
                                     <input className='existing-user-input' type='password' placeholder='password' id="newPassword" value={loginState.newPassword} onChange={handleChange} />
-                                    <input className='existing-user-input' type='password' placeholder='verify password' id="verifyPassword" value={loginState.verifyPassword} onChange={handleChange} />
+                                    <input className='existing-user-input' type='password' placeholder='verify password' id="verifyPassword" value={loginState.verifyPassword} onKeyDown={newHandleKeyDown} onChange={handleChange} />
                                     {(errorState.passwordMismatch) ? <p className='login-error'>passwords must match</p> : null }
                                     {(errorState.duplicateUser) ? <p className='login-error'>username taken</p> : null }
                                 </div>

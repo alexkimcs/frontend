@@ -36,6 +36,11 @@
     font-family: 'Major Mono Display', monospace;
 }
 
+.home-link {
+    text-decoration: none;
+    color: whitesmoke;
+}
+
 /*-------------------------------*/
 
 .Searchbar {
@@ -49,6 +54,7 @@
     margin: 0rem 0.5rem;
     padding: 0.5rem;
     width: 25rem;
+    color: whitesmoke;
 
 }
 
@@ -230,6 +236,13 @@
 .user-header {
     display: flex;
     flex-direction: row;
+    align-items: center;
+}
+
+.user-header-logged-in {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
 }
 

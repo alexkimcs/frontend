@@ -45,13 +45,12 @@
 }
 
 .edit-post-button {
-    border-radius: 0.50rem;
+    border-radius: 0.25rem;
     background-color:  rgb(62, 62, 62);
     color: rgb(254, 213, 77);
-    height: 2rem;
-    width: 4.5rem;
     border: 1px solid rgb(254, 213, 77);
     margin-right: 0.25rem;
+    padding: 0.25rem;
 }
 
 .edit-post-button:hover {
@@ -60,17 +59,16 @@
 }
 
 .delete-post-button {
-    border-radius: 0.50rem;
+    border-radius: 0.25rem;
     background-color:  rgb(62, 62, 62);
-    color: rgb(206, 67, 67);
-    height: 2rem;
-    width: 4.5rem;
-    border: 1px solid rgb(206, 67, 67);
+    color: rgb(247, 33, 25);
+    border: 1px solid rgb(247, 33, 25);
     margin-left: 0.25rem;
+    padding: 0.25rem;
 }
 
 .delete-post-button:hover {
-    background-color: rgb(206, 67, 67);
+    background-color: rgb(247, 33, 25);
     color: rgb(62, 62, 62);
 }
 
@@ -92,16 +90,27 @@
 .tags-list {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: top;
     margin: 1rem 3rem;
-    flex-wrap: wrap;
 }
 
+.tags-array {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.tags-label {
+    margin-top: 0.5rem;
+}
+
+
 .Tag {
-    margin: 0rem 0.5rem;
+    margin: 0.25rem 0.5rem;
     background-color: rgba(254, 213, 77, 0.4);
-    padding: 0rem 0.5rem;
+    padding: 0.25rem 0.5rem;
     border-radius: 0.5rem;
+    width: auto;
     cursor: pointer;
 }
 
@@ -149,12 +158,11 @@
 }
 
 .comment-button {
-    border-radius: 0.50rem;
+    border-radius: 0.25rem;
     background-color:  rgb(62, 62, 62);
     color: whitesmoke;
-    height: 2rem;
-    width: 4.5rem;
-    border: 1px solid rgb(62, 62, 62);
+    border: 1px solid whitesmoke;
+    padding: 0.25rem;
 }
 
 .comment-button:hover {
@@ -173,11 +181,43 @@
 
 .new-comment-button {
     border-radius: 0.25rem;
-    background-color:  whitesmoke;
-    color: rgb(62, 62, 62);
-    font-weight: bold;
-    height: 2rem;
+    background-color:  rgb(62, 62, 62);
+    color: whitesmoke;
+    border: 1px solid whitesmoke;
+    padding: 0.25rem;
+}
+
+.new-comment-button:hover {
+    color:rgb(254, 213, 77);
     border: 1px solid rgb(254, 213, 77);
+}
+
+.add-new-comment-button {
+    border-radius: 0.25rem;
+    background-color:  rgb(62, 62, 62);
+    color: rgb(254, 213, 77);
+    border: 1px solid rgb(254, 213, 77);
+    padding: 0.25rem 0.35rem;
+}
+
+.add-new-comment-button:hover {
+    color:rgb(62, 62, 62);
+    background-color: rgb(254, 213, 77);
+    border: 1px solid rgb(62, 62, 62);
+}
+
+.cancel-comment-button {
+    border-radius: 0.25rem;
+    background-color:  rgb(62, 62, 62);
+    color: rgb(247, 33, 25);
+    border: 1px solid rgb(247, 33, 25);
+    margin-left: 0.25rem;
+    padding: 0.25rem 0.3rem;
+}
+
+.cancel-comment-button:hover {
+    background-color:  rgb(247, 33, 25);
+    color: rgb(62, 62, 62);
 }
 
 .comment-item {
@@ -190,6 +230,7 @@
 
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -200,6 +241,13 @@
 .comment-body {
     color: whitesmoke;
     margin-left: 1rem;
+}
+
+.comment-edit-buttons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-left: 0.25rem;
 }
 
 .PostBody-row {
@@ -220,4 +268,72 @@
     border-radius: 0.25rem;
 }
 
+.edit-comment-button {
+    border-radius: 0.25rem;
+    background-color:  rgb(62, 62, 62);
+    color: rgb(254, 213, 77);
+    border: 1px solid rgb(254, 213, 77);
+    margin-right: 0.25rem;
+    padding: 0.25rem;
+}
+
+.edit-comment-button:hover {
+    background-color:  rgb(254, 213, 77);
+    color: rgb(62, 62, 62);
+}
+
+.delete-comment-button {
+    border-radius: 0.25rem;
+    background-color:  rgb(62, 62, 62);
+    color: rgb(247, 33, 25);
+    border: 1px solid rgb(247, 33, 25);
+    margin-left: 0.25rem;
+    padding: 0.25rem 0.35rem;
+}
+
+.delete-comment-button:hover {
+    background-color:  rgb(247, 33, 25);
+    color: rgb(62, 62, 62);
+}
+
+.no-interaction {
+    font-size: small;
+    color: whitesmoke;
+    background-color: rgb(247, 33, 25);
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+}
+
+@media only screen and (max-width: 415px) {
+    .PostCard {
+        margin: 2rem 2rem;
+    }
+
+    .add-new-comment-button {
+        margin-right: 0.25rem;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .PostCard {
+        margin: 2rem 2rem;
+    }
+
+    .add-new-comment-button {
+        margin-right: 0.25rem;
+    }
+}
+
+@media only screen
+    and (max-width: 1024px)
+    and (min-width: 706px) 
+    {
+    .PostCard {
+        margin: 2rem auto;
+    }
+
+    .add-new-comment-button {
+        margin-right: 0.25rem;
+    }
+}
 
