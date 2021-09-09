@@ -98,8 +98,13 @@ function App() {
               return `${diff} h`;
             }
           } else {
-            let diff = viewTime.day - postTime.day;
-            return `${diff} d`;
+            if (viewTime.hour < 23) {
+              let diff = (viewTime.hour + 23) - postTime.hour;
+              return `${diff} h`
+            } else {
+              let diff = viewTime.day - postTime.day;
+              return `${diff} d`;
+            }
           }
         } else {
           let diff = viewTime.month - postTime.month;
