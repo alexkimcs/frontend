@@ -11,6 +11,7 @@ function PostInteractions({ id, likes, comments }) {
     const [isLiked, setIsLiked] = useState(false);
     const [addNew, setAddNew] =useState(false);
     const [commentText, setCommentText] = useState('');
+    const [noInteraction, setNoInteraction] = useState(false);
     
     const checkLikes = () => {
         axios.get(`${URL}/posts`)
@@ -33,7 +34,10 @@ function PostInteractions({ id, likes, comments }) {
         // let tmp = postLikes
 
         if (thisUser.username === 'guest') {
-            window.alert('you must be logged in to interact with posts');
+            setNoInteraction(true);
+            window.setTimeout(() => {
+                setNoInteraction(false);
+            }, 2000)
         } else {
             if (isLiked) {
                 let newLikes = [...postLikes]
@@ -58,7 +62,6 @@ function PostInteractions({ id, likes, comments }) {
                     })
             }
         }
-        
     }
 
     const handleCommentChange = (e) => {
@@ -84,7 +87,7 @@ function PostInteractions({ id, likes, comments }) {
 
     useEffect(() => {
         checkLikes();
-    }, [id, postLikes, addNew])
+    }, [id, postLikes, addNew, thisUser])
 
     return (
         <div className='PostInteractions'>
@@ -95,6 +98,9 @@ function PostInteractions({ id, likes, comments }) {
                         : <button className='like-button'><i onClick={handleClickLike} className='far fa-heart like-icon'></i></button>
                     }
                     <h4 className='likes-num'>{(postLikes === []) ? 0 : postLikes.length}</h4>
+                    {noInteraction &&
+                        <p className='no-interaction'>must be logged in to interact with posts</p>
+                    }
                 </div>
                 {(thisUser.username !== 'guest') &&
                     <button className='comment-button' onClick={() => setAddNew(true)} >comment</button>

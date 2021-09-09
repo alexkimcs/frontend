@@ -247,3 +247,11 @@
     color: rgb(62, 62, 62);
 }
 
+.no-interaction {
+    font-size: small;
+    color: whitesmoke;
+    background-color: rgb(206, 67, 67);
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+}
+
