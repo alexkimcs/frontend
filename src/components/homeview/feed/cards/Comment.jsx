@@ -61,6 +61,12 @@ function Comment({comment, id}) {
             .catch(console.error)
     }
 
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            submitEdit();
+        }
+    }
+
     if (!editComment) {
         return (
         <div className='comment-item'>
@@ -80,9 +86,9 @@ function Comment({comment, id}) {
     } else {
         return (
             <div className='comment-item'>
-                <input className='new-comment-input' type='text' placeholder='add comment here' value={editedComment.body} onChange={handleEdit} />
-                <button className='new-comment-button' type='button' onClick={submitEdit}>save</button>
-                <button className='new-comment-button' type='button' onClick={editCommentClick} >cancel</button>
+                <input className='new-comment-input' type='text' placeholder='add comment here' value={editedComment.body} onChange={handleEdit} onKeyDown={handleKeyDown} />
+                <button className='submit-edit-comment-button' type='button' onClick={submitEdit} ><span className='fas fa-plus'></span></button>
+                <button className='cancel-edit-comment-button' type='button' onClick={editCommentClick} ><span className='fas fa-ban'></span></button>
             </div>
         )
     }
