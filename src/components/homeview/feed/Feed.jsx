@@ -10,14 +10,12 @@ function Feed(props) {
         console.log(postsState)
     }, [postsState])
 
-
-
     if (postsState) {
         if (postsState.length === 0) {
             return (
                 <div className='Feed-no-results'>
-                    <h3>no results found</h3>
-                    <h3>try another search</h3>
+                    <h3>No results found</h3>
+                    <h3>Try another search</h3>
                 </div>
             )
         } else {
@@ -34,7 +32,7 @@ function Feed(props) {
         
     } else {
         return (
-        <div className='Feed'>
+        <div className='Feed-no-results'>
             <h2>loading posts...</h2>
         </div>
         )
