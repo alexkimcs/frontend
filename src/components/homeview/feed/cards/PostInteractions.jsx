@@ -18,10 +18,8 @@ function PostInteractions({ id, likes, comments }) {
             .then(res => {
                 let thisPost = res.data.find(post => post._id === id);
                 let thisPostLikes = thisPost.likes;
-                let liked = thisPostLikes.find(like => like.id === thisUser.userID);
-                if (liked) {
-                    setIsLiked(true);
-                }
+                let liked = thisPostLikes.some(like => like.id === thisUser.userID);
+                setIsLiked(liked)
             })
     }
 
