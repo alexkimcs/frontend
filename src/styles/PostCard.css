@@ -44,6 +44,13 @@
     color: rgb(254, 213, 77);
 }
 
+.post-edit-buttons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-left: 0.25rem;
+}
+
 .edit-post-button {
     border-radius: 0.25rem;
     background-color:  rgb(62, 62, 62);
