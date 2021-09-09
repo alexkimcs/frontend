@@ -22,9 +22,9 @@ function PostBody({ body }) {
                 <p className='body-text'>
                 {splitBody.map(sub => {
                     if (splitBody.indexOf(sub) % 2 === 0) {
-                        return <span>{sub}</span>
+                        return <span key={sub}>{sub}</span>
                     } else {
-                        return <span className='code-block'>{sub}</span>
+                        return <span key={sub} className='code-block'>{sub}</span>
                     }
                     })
                 }
