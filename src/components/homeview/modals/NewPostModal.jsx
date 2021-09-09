@@ -48,8 +48,8 @@ function NewPostModal(props) {
                 <div className='modal-textbox'>
                     
                     <div className='form'>
-                        <input className='title-input' id='title' type='text' placeholder='title' value={newPost.title} onChange={handleChange}/>
-                        <textarea className='body-input' id='body' rows='10' cols='30' placeholder='say what you need to say, use backticks (`) for code blocks' value={newPost.body} onChange={handleChange}/>
+                        <input className='title-input' id='title' type='text' placeholder='title' value={newPost.title} onChange={handleChange} required/>
+                        <textarea className='body-input' id='body' rows='10' cols='30' placeholder='say what you need to say, use backticks (`) for code blocks' value={newPost.body} onChange={handleChange} required />
                         <div className='tags'>
                             <div>
                                 <label htmlFor='tag-input'>enter tags separated by commas</label>
