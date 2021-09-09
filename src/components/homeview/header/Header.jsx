@@ -25,13 +25,17 @@ function Header(props) {
             </div>
             
             <Searchbar />
-            <div className='user-header'>
-                {(thisUser.username !== 'guest') &&
+            {(thisUser.username === 'guest') && 
+                <div className='user-header-logged-in'>
+                    <UserDropdown />
+                </div>
+            }
+            {(thisUser.username !== 'guest') &&
+                <div className='user-header'>
                     <AddPost />
-                }
-                
-                <UserDropdown />
-            </div>
+                    <UserDropdown />
+                </div>
+            }
             
         </div>
     );
