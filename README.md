@@ -58,7 +58,7 @@ https://feedbackloopapp.herokuapp.com/
 
 
 ### Group members:
-- Michael Dunn O'Connor, Scrum Master (https://git.generalassemb.ly/dunnoconnor)
-- Cole Rener, Front End (https://git.generalassemb.ly/crener)
-- Menty Sisay, Backend (https://git.generalassemb.ly/mentysisay)
-- Nita Lo, Front End (https://git.generalassemb.ly/nlo88)
+- [Michael Dunn O'Connor](https://git.generalassemb.ly/dunnoconnor)
+- [Cole Rener](https://git.generalassemb.ly/crener)
+- [Menty Sisay](https://git.generalassemb.ly/mentysisay)
+- [Nita Lo](https://git.generalassemb.ly/nlo88)
