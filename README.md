@@ -37,6 +37,9 @@ https://feedbackloopapp.herokuapp.com/
 - Each object in the array contains the userID and username of the user who liked the post
 - Users can only like a post once
 - Since likes are stored with the userID and username, users can see posts they've liked during previous sessions
+## Component Tree
+![Screen Shot 2021-09-09 at 1 30 31 PM (2)](https://user-images.githubusercontent.com/63392756/132734404-da2c429c-4701-449b-9412-0233d8b326d6.png)
+
 
 ## Screenshots
 <img width="587" alt="Screen Shot 2021-09-09 at 11 49 02 AM" src="https://media.git.generalassemb.ly/user/36585/files/4b566e00-1164-11ec-981f-3453437d65f0">
