@@ -239,6 +239,13 @@
     align-items: center;
 }
 
+.user-header-logged-in {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
 .add-post-button {
     border: 2px solid whitesmoke;
     padding: 0.25rem 1rem;

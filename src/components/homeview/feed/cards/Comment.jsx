@@ -67,10 +67,9 @@ function Comment({comment, id}) {
             <div>
                 <h4 className='comment-text'>{comment.username} <span style={{fontStyle: 'italic', fontSize: 'small'}}>said</span> : </h4>
                 <p className='comment-body'>{comment.body}</p>
-                <p classnmae='comment-timestamp'></p>
             </div>
             {(comment.username === thisUser.username) &&
-                <div>
+                <div className='comment-edit-buttons'>
                     <button className='edit-comment-button' type='button' onClick={editCommentClick}><span className='far fa-edit'></span></button> 
                     <button className='delete-comment-button' type='button' onClick={deleteComment}><span className='far fa-trash-alt'></span></button> 
                 </div>

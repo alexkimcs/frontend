@@ -90,16 +90,27 @@
 .tags-list {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: top;
     margin: 1rem 3rem;
-    flex-wrap: wrap;
 }
 
+.tags-array {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.tags-label {
+    margin-top: 0.5rem;
+}
+
+
 .Tag {
-    margin: 0rem 0.5rem;
+    margin: 0.25rem 0.5rem;
     background-color: rgba(254, 213, 77, 0.4);
-    padding: 0rem 0.5rem;
+    padding: 0.25rem 0.5rem;
     border-radius: 0.5rem;
+    width: auto;
     cursor: pointer;
 }
 
@@ -186,7 +197,7 @@
     background-color:  rgb(62, 62, 62);
     color: rgb(254, 213, 77);
     border: 1px solid rgb(254, 213, 77);
-    padding: 0.25rem;
+    padding: 0.25rem 0.35rem;
 }
 
 .add-new-comment-button:hover {
@@ -201,7 +212,7 @@
     color: rgb(247, 33, 25);
     border: 1px solid rgb(247, 33, 25);
     margin-left: 0.25rem;
-    padding: 0.25rem;
+    padding: 0.25rem 0.3rem;
 }
 
 .cancel-comment-button:hover {
@@ -230,6 +241,13 @@
 .comment-body {
     color: whitesmoke;
     margin-left: 1rem;
+}
+
+.comment-edit-buttons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-left: 0.25rem;
 }
 
 .PostBody-row {
@@ -270,7 +288,7 @@
     color: rgb(247, 33, 25);
     border: 1px solid rgb(247, 33, 25);
     margin-left: 0.25rem;
-    padding: 0.25rem;
+    padding: 0.25rem 0.35rem;
 }
 
 .delete-comment-button:hover {
@@ -284,5 +302,38 @@
     background-color: rgb(247, 33, 25);
     padding: 0.25rem;
     border-radius: 0.25rem;
+}
+
+@media only screen and (max-width: 415px) {
+    .PostCard {
+        margin: 2rem 2rem;
+    }
+
+    .add-new-comment-button {
+        margin-right: 0.25rem;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .PostCard {
+        margin: 2rem 2rem;
+    }
+
+    .add-new-comment-button {
+        margin-right: 0.25rem;
+    }
+}
+
+@media only screen
+    and (max-width: 1024px)
+    and (min-width: 706px) 
+    {
+    .PostCard {
+        margin: 2rem auto;
+    }
+
+    .add-new-comment-button {
+        margin-right: 0.25rem;
+    }
 }
 
