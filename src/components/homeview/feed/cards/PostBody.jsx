@@ -4,7 +4,6 @@ function PostBody({ body }) {
 
     const processBody = (text) => {
         let split = text.split('`');
-        console.log(split); 
         if (split[split.length - 1] === '') {
             split.pop();
         }

@@ -5,27 +5,55 @@ import { DataContext } from '../../../hidden/DataContext';
 
 function PostInteractions({ id, likes, comments }) {
 
-    const { thisUser, URL } = useContext(DataContext);
+    const { thisUser, URL, setPostsState } = useContext(DataContext);
 
     const [postLikes, setPostLikes] = useState(likes);
     const [isLiked, setIsLiked] = useState(false);
     const [addNew, setAddNew] =useState(false);
     const [commentText, setCommentText] = useState('');
     
+    const checkLikes = () => {
+        axios.get(`${URL}/posts`)
+            .then(res => {
+                let thisPost = res.data.find(post => post._id === id);
+                let thisPostLikes = thisPost.likes;
+                let liked = thisPostLikes.find(like => like.id === thisUser.userID);
+                if (liked !== undefined) {
+                    setIsLiked(true);
+                }
+            })
+    }
 
     const handleClickLike = (e) => {
-        let thisLike = isLiked;
-        setIsLiked(!thisLike);
 
         // (thisLike) ?
         // e.targetclassName = "fas fa-heart like-icon" :
         // e.targetclassName = "far fa-heart like-icon" ;
 
-        let tmp = parseInt(postLikes)
-        let newLikes = thisLike ? tmp - 1 : tmp + 1
-        setPostLikes(newLikes)
+        // let tmp = postLikes
+        if (isLiked) {
+            let newLikes = [...postLikes]
+            let index = newLikes.indexOf({id: thisUser.userID, username: thisUser.username});
+            newLikes.splice(index, 1);
+            setPostLikes(newLikes);
+            
+            axios.put(`${URL}/posts/${id}`, {likes: newLikes})
+                .then(res => {
+                    setIsLiked(false)
+                    setPostsState(res.data.reverse());
+                })
+        } else {
+            let newLikes = [...postLikes]
+            newLikes.push({id: thisUser.userID, username: thisUser.username})
+            setPostLikes(newLikes)
+            
+            axios.put(`${URL}/posts/${id}`, {likes: newLikes})
+                .then(res => {
+                    setIsLiked(true)
+                    setPostsState(res.data.reverse());
+                })
+        }
         
-        axios.put(`${URL}/posts/${id}`, {likes: newLikes});
         
     }
 
@@ -51,14 +79,18 @@ function PostInteractions({ id, likes, comments }) {
 
 
     useEffect(() => {
+        checkLikes();
     }, [id, postLikes, addNew])
 
     return (
         <div className='PostInteractions'>
             <div className='interactions-div'>
                 <div className='likes-div'>
-                    <button className='like-button'><i onClick={handleClickLike} className={`${(isLiked) ? "fas" : "far"} fa-heart like-icon`}></i></button>
-                    <h4 className='likes-num'>{postLikes}</h4>
+                    {(isLiked)
+                        ? <button className='like-button'><i onClick={handleClickLike} className='fas fa-heart like-icon'></i></button>
+                        : <button className='like-button'><i onClick={handleClickLike} className='far fa-heart like-icon'></i></button>
+                    }
+                    <h4 className='likes-num'>{(postLikes === []) ? 0 : postLikes.length}</h4>
                 </div>
                 <button className='comment-button' onClick={() => setAddNew(true)} >comment</button>
             </div>
@@ -66,7 +98,7 @@ function PostInteractions({ id, likes, comments }) {
             <hr />
             <div className='comments-div'>
                 {comments.map((comment)=> {
-                    return <Comment key={id + '-comment-' + (comments.indexOf(comment) + 1)} comment={comment} />
+                    return <Comment key={id + '-comment-' + (comments.indexOf(comment) + 1)} comment={comment} id={id} />
                 })}
                 {addNew &&
                     <div className='comment-item'>
