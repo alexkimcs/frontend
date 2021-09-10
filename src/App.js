@@ -98,7 +98,7 @@ function App() {
               return `${diff} h`;
             }
           } else {
-            if (viewTime.hour < 23) {
+            if (viewTime.hour < postTime.hour) {
               let diff = (viewTime.hour + 23) - postTime.hour;
               return `${diff} h`
             } else {
