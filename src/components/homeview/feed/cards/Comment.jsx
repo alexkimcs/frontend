@@ -2,24 +2,31 @@ import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { DataContext } from '../../../hidden/DataContext';
 
+//comment and owner id passed as props
 function Comment({comment, id}) {
-
+    
+    //states from useContext
     const { thisUser, URL, setPostsState } = useContext(DataContext);
-
+    
+    //states to track comment edits
     const [editComment, setEditComment] = useState(false);
     const [editedComment, setEditedComment] = useState(comment);
 
+    //toggle state for whether comment is being edited
     const editCommentClick = () => {
         setEditComment(!editComment);
     }
 
+    //when comment is edited, store the input value in state
     const handleEdit = (e) => {
         setEditedComment({...editedComment, body: e.target.value})
     }
 
+    //when edits are submitted, update the comments property of the relevant post
     const submitEdit = () => {
         let newComment = editedComment;
-
+        
+        //find post in database, splice this comment into comment array
         axios.get(`${URL}/posts/`)
             .then(res => {
                 let thisPost = res.data.find(post => post._id === id);
