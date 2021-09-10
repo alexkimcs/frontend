@@ -3,16 +3,20 @@ import axios from 'axios';
 import Comment from './Comment';
 import { DataContext } from '../../../hidden/DataContext';
 
+//post details passed as props
 function PostInteractions({ id, likes, comments }) {
-
+    
+    //import user and post details from usecontext
     const { thisUser, URL, setPostsState } = useContext(DataContext);
 
+    //state to track user interactions with this post
     const [postLikes, setPostLikes] = useState(likes);
     const [isLiked, setIsLiked] = useState(false);
     const [addNew, setAddNew] =useState(false);
     const [commentText, setCommentText] = useState('');
     const [noInteraction, setNoInteraction] = useState(false);
     
+    //get likes count from database
     const checkLikes = () => {
         axios.get(`${URL}/posts`)
             .then(res => {
@@ -23,20 +27,17 @@ function PostInteractions({ id, likes, comments }) {
             })
     }
 
+    //update likes locally and in database when post is liked
     const handleClickLike = (e) => {
 
-        // (thisLike) ?
-        // e.targetclassName = "fas fa-heart like-icon" :
-        // e.targetclassName = "far fa-heart like-icon" ;
-
-        // let tmp = postLikes
-
+        //prevent guests from liking posts
         if (thisUser.username === 'guest') {
             setNoInteraction(true);
             window.setTimeout(() => {
                 setNoInteraction(false);
             }, 2000)
         } else {
+            //if this user has already liked the post, they unlike it
             if (isLiked) {
                 let newLikes = [...postLikes]
                 let index = newLikes.indexOf({id: thisUser.userID, username: thisUser.username});
@@ -49,6 +50,7 @@ function PostInteractions({ id, likes, comments }) {
                         setPostsState(res.data.reverse());
                     })
             } else {
+                //if this user has not liked the post, they like it
                 let newLikes = [...postLikes]
                 newLikes.push({id: thisUser.userID, username: thisUser.username})
                 setPostLikes(newLikes)
@@ -62,37 +64,45 @@ function PostInteractions({ id, likes, comments }) {
         }
     }
 
+    //store comment changes in state
     const handleCommentChange = (e) => {
         setCommentText(e.target.value);
     }
-
+    
+    //update comments when submitted
     const createComment = () => {
+        
+        //add inputs to object
         let newComment = {
             username: thisUser.username,
             body: commentText
         }
 
+        //add new comment object to array of comments
         let newComments = comments;
         newComments.push(newComment);
 
+        //add new comment to database
         axios.put(`${URL}/posts/${id}`, {comments: newComments});
-
+        
+        //reset states
         setAddNew(false);
         setCommentText('');
     }
 
+    //submit comment when enter key is pressed in text input
     const handleKeyDown = (e) => {
         if (e.key === 'Enter') {
             createComment();
         }
     }
-    
 
-
+    //check likes when there is a change in state
     useEffect(() => {
         checkLikes();
     }, [id, postLikes, addNew, thisUser])
 
+    //diplay comments array
     return (
         <div className='PostInteractions'>
             <div className='interactions-div'>

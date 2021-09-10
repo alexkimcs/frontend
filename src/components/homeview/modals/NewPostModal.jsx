@@ -3,29 +3,37 @@ import { DataContext } from '../../hidden/DataContext';
 import '../../../styles/NewPostModal.css';
 import axios from 'axios';
 
-function NewPostModal(props) {
+function NewPostModal() {
 
+    //post and user states from useContext
     const { setAddPost, thisUser, setPostsState, URL } = useContext(DataContext);
 
+    //template object for newPostState
     const initialNewPostState = {
         title: '',
         body: '',
         tags: ''
     }
 
+    //state to track user interactions with the modal
     const [newPost, setNewPost] = useState(initialNewPostState);
 
+    //store user inputs in state
     const handleChange = (e) => {
         setNewPost({...newPost, [e.target.id]: e.target.value})
         console.log(newPost);
     }
 
+    //resolve new post submission
     const handleSubmit = () => {
         let thisOwner = '';
+        
+        //if a user is logged in, identify them as the post's owner
         if (thisUser.username !== 'guest') {
             thisOwner = thisUser.userID;
         }
 
+        //assign user inputs to object properties
         let newPostObj = {
             username: thisUser.username,
             title: newPost.title,
@@ -34,14 +42,18 @@ function NewPostModal(props) {
             owner: thisOwner
         }
 
+        //get all posts and display them from newest to oldest
         axios.post(`${URL}/posts`, newPostObj)
         .then((res) => {
             setPostsState(res.data.reverse());
         })
+
+        //reset states
         setNewPost(initialNewPostState);
         setAddPost(false);
     }
 
+    //display new post modal
     return (
         <div className='NewPostModal'>
             <div className='modal'>

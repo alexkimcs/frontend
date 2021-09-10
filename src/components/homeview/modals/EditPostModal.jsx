@@ -3,43 +3,48 @@ import { DataContext } from '../../hidden/DataContext';
 import '../../../styles/EditPostModal.css';
 import axios from 'axios';
 
+//post and edit modal toggle passed as props
 function EditPostModal({post, setShowEditModal}) {
-
+    
+    //postState from useContext
     const {setPostsState, URL } = useContext(DataContext);
 
+    //object template for edited post state
     const initialEditPostState = {
         title: post.title,
         body: post.body,
         tags: post.tags.join(', ')
     }
 
+    //state to store edited title, body, and tags
     const [editedPost, setEditedPost] = useState(initialEditPostState);
 
+    //store post edits in state
     const handleChange = (e) => {
         setEditedPost({...editedPost, [e.target.id]: e.target.value})
     }
 
     const handleSubmit = () => {
-
+        
+        //details of edited post stored in object
         let editedPostObj = {
             title: editedPost.title,
             body: editedPost.body,
             tags: editedPost.tags.split(', ')
         }
 
-        console.log('edited post', editedPost)
-        console.log('edited post obj', editedPostObj)
-
+        //update post object in database
         axios.put(`${URL}/posts/${post._id}`, editedPostObj)
         .then((res) => {
             setPostsState(res.data.reverse());
         })
 
+        //reset state
         setEditedPost(initialEditPostState);
         setShowEditModal(false);
-
     }
 
+    //display edit post modal
     return (
         <div className='EditPostModal'>
             <div className='modal'>
