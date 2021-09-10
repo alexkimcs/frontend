@@ -39,7 +39,7 @@ https://feedbackloopapp.herokuapp.com/
 - Since likes are stored with the userID and username, users can see posts they've liked during previous sessions
 
 ## Feedback Loop Data Flow
-<img width="600" alt="data flow" src="https://user-images.githubusercontent.com/63392756/132751497-9219f0c6-ad1c-475d-aca6-195954cfd57c.png">
+<img width="600" alt="data flow" src="https://user-images.githubusercontent.com/37776449/132764389-62c51126-04ba-46bc-a180-2a4b387e360c.png">
 
 ## Component Tree
 ![Screen Shot 2021-09-09 at 1 30 31 PM (2)](https://user-images.githubusercontent.com/63392756/132734404-da2c429c-4701-449b-9412-0233d8b326d6.png)
@@ -58,7 +58,7 @@ https://feedbackloopapp.herokuapp.com/
 
 
 ### Group members:
-- Michael Dunn O'Connor, Scrum Master (https://git.generalassemb.ly/dunnoconnor)
-- Cole Rener, Front End (https://git.generalassemb.ly/crener)
-- Menty Sisay, Backend (https://git.generalassemb.ly/mentysisay)
-- Nita Lo, Front End (https://git.generalassemb.ly/nlo88)
+- [Michael Dunn O'Connor](https://git.generalassemb.ly/dunnoconnor) - Scrum Manager
+- [Cole Rener](https://git.generalassemb.ly/crener)
+- [Menty Sisay](https://git.generalassemb.ly/mentysisay)
+- [Nita Lo](https://git.generalassemb.ly/nlo88)
