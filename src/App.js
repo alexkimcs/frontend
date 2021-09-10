@@ -7,7 +7,7 @@ import axios from 'axios';
 import LogInModal from './components/homeview/modals/LogInModal';
 
 function App() {
-
+  
   //intial values for state objects
   const initialInteractionState = {
     currentlyViewing: null,
@@ -19,7 +19,6 @@ function App() {
     userID: ''
   }
   
-
   //reference to backend url
   const URL = "https://feedbackloopbackend.herokuapp.com"; 
   //const URL = "http://localhost:4000"
@@ -84,7 +83,6 @@ function App() {
       second: new Date().getSeconds()
     }
 
-      
     if (viewTime.year === postTime.year) {
       if (viewTime.month === postTime.month) {
         if (viewTime.day === postTime.day) {
