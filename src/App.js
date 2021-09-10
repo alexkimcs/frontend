@@ -7,20 +7,24 @@ import axios from 'axios';
 import LogInModal from './components/homeview/modals/LogInModal';
 
 function App() {
+
+  //intial values for state objects
   const initialInteractionState = {
     currentlyViewing: null,
     currentlyEditing: null,
     searchValue: '',
   }
-
   const initialUserState = {
     username: 'guest',
     userID: ''
   }
   
+
+  //reference to backend url
   const URL = "https://feedbackloopbackend.herokuapp.com"; 
   //const URL = "http://localhost:4000"
   
+  //states to track user login and interactions
   const [interactionState, setInteractionState] = useState(initialInteractionState);
   const [postsState, setPostsState] = useState(null);
   const [users, setUsers] = useState(null);
@@ -29,100 +33,103 @@ function App() {
   const [logIn, setLogIn] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  //console.log('THIS USER', thisUser)
-  
-    function getPosts() {
-        axios.get(`${URL}/posts`)
-            .then(res => {
-                setPostsState(res.data.reverse());
-            })
-            .catch(console.error);
-    }
-
-    function getUsers() {
-      axios.get(`${URL}/users`)
-        .then(res => {
-          setUsers(res.data);
+  //get all posts from database
+  function getPosts() {
+    axios.get(`${URL}/posts`)
+      .then(res => {
+        setPostsState(res.data.reverse());
         })
-        .catch(console.error);
+      .catch(console.error);
+  }
+
+  //get all users from database
+  function getUsers() {
+    axios.get(`${URL}/users`)
+      .then(res => {
+        setUsers(res.data);
+      })
+      .catch(console.error);
+  }
+
+  //check whether there is a user in localstorage
+  function checkSessionUser() {
+    const sessionUser = localStorage.getItem("user");
+    const sessionID = localStorage.getItem("userID");
+    if (sessionUser && sessionID) {
+      setThisUser({...thisUser, username: sessionUser, userID: sessionID});
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }
+  
+  //display how long ago a post was created
+  const displayTime = (time) => {
+      
+    let postTime = {
+      year: new Date(time).getFullYear(),
+      month: new Date(time).getMonth(),
+      day: new Date(time).getDate(),
+      hour: new Date(time).getHours(),
+      minute: new Date(time).getMinutes(),
+      second: new Date(time).getSeconds()
     }
 
-
-    function checkSessionUser() {
-      const sessionUser = localStorage.getItem("user");
-      const sessionID = localStorage.getItem("userID");
-      if (sessionUser && sessionID) {
-        setThisUser({...thisUser, username: sessionUser, userID: sessionID});
-        setIsLoggedIn(true);
-      } else {
-        setIsLoggedIn(false);
-      }
+    let viewTime = {
+      year: new Date().getFullYear(),
+      month: new Date().getMonth(),
+      day: new Date().getDate(),
+      hour: new Date().getHours(),
+      minute: new Date().getMinutes(),
+      second: new Date().getSeconds()
     }
 
-    const displayTime = (time) => {
       
-      let postTime = {
-        year: new Date(time).getFullYear(),
-        month: new Date(time).getMonth(),
-        day: new Date(time).getDate(),
-        hour: new Date(time).getHours(),
-        minute: new Date(time).getMinutes(),
-        second: new Date(time).getSeconds()
-      }
-
-      let viewTime = {
-        year: new Date().getFullYear(),
-        month: new Date().getMonth(),
-        day: new Date().getDate(),
-        hour: new Date().getHours(),
-        minute: new Date().getMinutes(),
-        second: new Date().getSeconds()
-      }
-
-      
-      if (viewTime.year === postTime.year) {
-        if (viewTime.month === postTime.month) {
-          if (viewTime.day === postTime.day) {
-            if (viewTime.hour === postTime.hour) {
-              if (viewTime.minute === postTime.minute) {
-                if ((viewTime.second - postTime.second) < 30 ) {
-                  return 'just now'
-                } else {
-                  let diff = viewTime.second - postTime.second;
-                  return `${diff} s`;
-                }
+    if (viewTime.year === postTime.year) {
+      if (viewTime.month === postTime.month) {
+        if (viewTime.day === postTime.day) {
+          if (viewTime.hour === postTime.hour) {
+            if (viewTime.minute === postTime.minute) {
+              if ((viewTime.second - postTime.second) < 30 ) {
+                return 'just now'
               } else {
-                let diff = viewTime.minute - postTime.minute;
-                return `${diff} m`;
+                let diff = viewTime.second - postTime.second;
+                return `${diff} s`;
               }
             } else {
-              let diff = viewTime.hour - postTime.hour;
-              return `${diff} h`;
+              let diff = viewTime.minute - postTime.minute;
+              return `${diff} m`;
             }
           } else {
-            if (viewTime.hour < 23) {
-              let diff = (viewTime.hour + 23) - postTime.hour;
-              return `${diff} h`
-            } else {
-              let diff = viewTime.day - postTime.day;
-              return `${diff} d`;
-            }
+            let diff = viewTime.hour - postTime.hour;
+            return `${diff} h`;
           }
         } else {
-          let diff = viewTime.month - postTime.month;
-          return `${diff} m`;
+          if ((viewTime.day - postTime.day === 1) && (viewTime.hour < postTime.hour)) {
+            let diff = (viewTime.hour + 24) - postTime.hour;
+            return `${diff} h`
+          } else {
+            let diff = viewTime.day - postTime.day;
+            return `${diff} d`;
+          }
         }
       } else {
-        let diff = viewTime.year - postTime.year;
-        return `${diff} y`;
+        let diff = viewTime.month - postTime.month;
+        return `${diff} m`;
       }
+    } else {
+      let diff = viewTime.year - postTime.year;
+      return `${diff} y`;
     }
+  }
 
-    useEffect(() => {
-      getPosts();
-      getUsers();
-      checkSessionUser();
-    }, []);
+  //on load, get all posts and users
+  //then check if there is a session user logged in
+  useEffect(() => {
+    getPosts();
+    getUsers();
+    checkSessionUser();
+  }, []);
 
     displayTime("2021-09-06T19:40:40.481Z");
 

@@ -14,11 +14,11 @@ function Header(props) {
         <div className='Header'>
             <div className='logo-and-title-div'>
                 <div>
-                    <a className='home-link' href={`${URL}/posts`} ><img className='logo' src={logo} alt='feedback-loop-logo' /></a>
+                    <a className='home-link' href="/" ><img className='logo' src={logo} alt='feedback-loop-logo' /></a>
                 </div>
 
                 <div className='title'>
-                    <h1 className='header-title'><a className='home-link' href={`${URL}/posts`} >Feedback Loop</a></h1>
+                    <h1 className='header-title'><a className='home-link' href="/" >Feedback Loop</a></h1>
                 </div>
 
 
