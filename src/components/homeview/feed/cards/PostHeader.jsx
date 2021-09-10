@@ -3,25 +3,29 @@ import React, { useContext, useState } from 'react';
 import { DataContext } from '../../../hidden/DataContext';
 import EditPostModal from '../../modals/EditPostModal';
 
-
+//post details passed as props
 function PostHeader({title, author, time, ownerID, post}) {
 
+    //import post details from useContext
     const { displayTime, thisUser, setPostsState, URL } = useContext(DataContext);
-
+    
+    //state to toggle edit modal
     const [showEditModal, setShowEditModal] = useState(false);
-
+    
+    //function to toggle edit modal state
     const editPost = () => {
         setShowEditModal(true);
     }
-
+    
+    //delete post by id
     const deletePost = () => {
-        console.log(post._id)
         axios.delete(`${URL}/posts/${post._id}`)
         .then((res) => {
             setPostsState(res.data.reverse());
         })
     }
-
+    
+    //display post details in header
     return (
         <div className='PostHeader'>
             {showEditModal &&

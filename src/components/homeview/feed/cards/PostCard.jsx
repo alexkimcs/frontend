@@ -5,8 +5,8 @@ import PostInteractions from './PostInteractions';
 import '../../../../styles/PostCard.css';
 import Tag from './Tag';
 
+//post passed as props
 function PostCard({ post }) {
-
     return (
         <div className='PostCard'>
             <PostHeader author={post.username} title={post.title} time={post.createdAt} ownerID={post.owner} post={post} />

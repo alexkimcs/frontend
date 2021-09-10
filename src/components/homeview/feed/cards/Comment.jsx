@@ -46,7 +46,7 @@ function Comment({comment, id}) {
             })
             .catch(console.error)
     }
-
+    ////find post in database, delete this comment from comment array
     const deleteComment = () => {
         axios.get(`${URL}/posts/`)
             .then(res => {
@@ -68,6 +68,7 @@ function Comment({comment, id}) {
             .catch(console.error)
     }
 
+    //submit comment if enter key pressed on text input
     const handleKeyDown = (e) => {
         if (e.key === 'Enter') {
             submitEdit();

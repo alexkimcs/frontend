@@ -7,9 +7,12 @@ import logo from '../../../logo-5.png';
 import { DataContext } from '../../hidden/DataContext';
 
 
-function Header(props) {
-
+function Header() {
+    
+    //user state from useContext
     const {thisUser} = useContext(DataContext);
+
+    //display header
     return (
         <div className='Header'>
             <div className='logo-and-title-div'>

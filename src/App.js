@@ -8,12 +8,14 @@ import LogInModal from './components/homeview/modals/LogInModal';
 
 function App() {
   
-  //intial values for state objects
+  //template object for user interaction state
   const initialInteractionState = {
     currentlyViewing: null,
     currentlyEditing: null,
     searchValue: '',
   }
+
+  //template object for user state
   const initialUserState = {
     username: 'guest',
     userID: ''
@@ -32,7 +34,7 @@ function App() {
   const [logIn, setLogIn] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  //get all posts from database
+  //get all posts from database and displays the newest posts first
   function getPosts() {
     axios.get(`${URL}/posts`)
       .then(res => {
@@ -64,7 +66,8 @@ function App() {
   
   //display how long ago a post was created
   const displayTime = (time) => {
-      
+    
+    //get time post was created from the function parameter
     let postTime = {
       year: new Date(time).getFullYear(),
       month: new Date(time).getMonth(),
@@ -74,6 +77,7 @@ function App() {
       second: new Date(time).getSeconds()
     }
 
+    //get current time
     let viewTime = {
       year: new Date().getFullYear(),
       month: new Date().getMonth(),
@@ -83,6 +87,7 @@ function App() {
       second: new Date().getSeconds()
     }
 
+    //compare post creation time and current time to display post age
     if (viewTime.year === postTime.year) {
       if (viewTime.month === postTime.month) {
         if (viewTime.day === postTime.day) {

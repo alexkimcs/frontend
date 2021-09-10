@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 
+//body passed as props
 function PostBody({ body }) {
-
+    //split post body at backticks to isolate code blocks
     const processBody = (text) => {
         let split = text.split('`');
         if (split[split.length - 1] === '') {
@@ -11,11 +12,12 @@ function PostBody({ body }) {
     }
 
     let splitBody = '';
-
+    //check body for backticks
     if (body.includes('`')) {
         splitBody = processBody(body);
     }
     
+    //wrap codeblocks in a span if they are present
     if (body.includes('`')) {
         return (
             <div className='PostBody-row'>
