@@ -99,7 +99,7 @@ function App() {
             }
           } else {
             if ((viewTime.day - postTime.day === 1) && (viewTime.hour < postTime.hour)) {
-              let diff = (viewTime.hour + 23) - postTime.hour;
+              let diff = (viewTime.hour + 24) - postTime.hour;
               return `${diff} h`
             } else {
               let diff = viewTime.day - postTime.day;
